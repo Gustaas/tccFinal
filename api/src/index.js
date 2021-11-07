@@ -83,17 +83,10 @@ app.put('/resetSenha', async (req, resp) => {
     if(!user) {
         resp.send( {status: 'erro', mensagem: 'Email Inválido'});
     }
-    if(user.ds_codigo_rec !== req.body.codigo) {
-        resp.send({ status: 'erro', mensagem: 'código inválido'})
-    }
 
-    await db.infoa_dtn_tb_cliente.update({
-
-    }, {
-        ds_senha: req.body.novaSenha 
-    }, {
-        where: {  nm_cliente: user.nm_cliente }
-    })
+    let r = await db.infoa_dtn_tb_cliente.update({
+        ds_senha: req.body.novaSenha}, {where: {id_cliente: user.id_cliente}} )
+        
     resp.send({ status: 'ok', mensagem: 'A senha foi alterada'})
     
 })
