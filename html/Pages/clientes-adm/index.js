@@ -14,6 +14,7 @@ export default function ClientesAdmin () {
             <th>TELEFONE</th>
             <th>E-MAIL</th>
             <th>AÇÕES</th>
+            <th>A</th>
         </thead>
 
         <tr className="cor-alternada">
