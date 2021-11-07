@@ -14,6 +14,7 @@ export default function Home () {
         </div>
 
         <div class="faixa-2">
+            <div> a </div>
             <div class="geral-masculino">
                 <div class="masculino">Masculino</div>
                 <div class="img-masculino">
