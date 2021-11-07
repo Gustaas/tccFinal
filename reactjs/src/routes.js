@@ -24,6 +24,8 @@ import SaoPaulo from './pages/productSections/times/saoPaulo';
 import Palmeiras from './pages/productSections/times/palmeiras';
 import Santos from './pages/productSections/times/santos';
 import Corinthians from './pages/productSections/times/corinthians';
+import Esqueci from './pages/userAcess/esqueciASenha';
+import Reset from './pages/userAcess/reset';
 
 import Produtos from  './pages/admin/produtos/products/index'
 
@@ -52,6 +54,8 @@ export default function Final() {
             <Route path='/palmeiras' component={Palmeiras}/>
             <Route path='/santos' component={Santos}/>
             <Route path='/corinthians' component={Corinthians}/>
+            <Route path='/esqueciASenha' component={Esqueci}/>
+            <Route path='/reset' component={Reset}/>
             
             {/*PARTE ADMINISTRATIVA*/}
             <Route path='/admin/login' component={LoginAdmin}/>

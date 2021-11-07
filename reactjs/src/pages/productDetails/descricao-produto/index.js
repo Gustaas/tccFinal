@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 
 export default function Desc(props) {
-    const [ produto, setProduto] = useState(props.location.state);
+    const [ produto] = useState(props.location.state);
     const Navigation = useHistory();
 
     function comprar() {

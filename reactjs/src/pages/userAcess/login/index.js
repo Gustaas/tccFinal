@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Container } from "./styled";
 import { Button } from "../../../components/button/styled";
 import { Input } from "../../../components/input/styled";
@@ -10,31 +11,28 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar';
 
 
-import Api from '../../../service/api';
-const api = new Api(); 
+
+
 
 
 export default function Login() {
 
-    const [ usuario, setUsuario] = useState('');
+    const [ email, setEmail] = useState('');
     const [ senha, setSenha] = useState('');
 
     const loading = useRef(null); 
     const navigation = useHistory();
 
-    const logar = async () => {
+    async function logar() {
         loading.current.continuousStart();
+        const r = await axios.post(`http://localhost:3030/login` , { email : email, senha: senha});
+        if (r.data.status === 'ok') {
+            navigation.push('/')
 
-        let r = await api.login(usuario, senha);
-        if (r.erro) {
-            toast.error(`${r.erro}`)
-            loading.current.staticStart();
         } else {
-            
-            navigation.push('/home');
-            
+            toast.error(r.data.mensagem);
+            loading.current.complete();
         }
-
     }
 
     return(
@@ -50,8 +48,8 @@ export default function Login() {
                     <div class="reg-campos">
                         <div class="reg-campotitulo">E-Mail:</div>
                         <div class="reg-campos-input">
-                            <Input value={usuario}
-                            onChange={e => setUsuario(e.target.value)}
+                            <Input value={email}
+                            onChange={e => setEmail(e.target.value)}
                              />
                         </div>
                     </div>
@@ -62,7 +60,11 @@ export default function Login() {
                             <Input value={senha}
                             onChange={e => setSenha(e.target.value)}
                              type="password"/>
-                        <div class="reg-camposenha">Esqueceu sua senha?</div>
+                        <div class="reg-camposenha"> 
+                            <Link to="/esqueciASenha">
+                            Esqueceu sua senha?</Link> 
+                        </div>
+
                         </div>
                     </div>
 
