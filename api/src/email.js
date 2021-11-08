@@ -1,19 +1,19 @@
 import nodemailer from 'nodemailer';
 
 const sender = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    host: "smtp.gmail.com",
+    port: 587,
     secure: false,
     auth: {
-        user: 'da88609faee084',
-        pass: '68707b0056e99d',
+        user: 'destiny.contato21@gmail.com',
+        pass: '#Destiny123',
     },
 
 });
 
 async function enviarEmail(para, assunto, mensagem){
     const response = await sender.sendMail({
-        from: '"TCC INSF" <mailing.tcc.info@acaonsfatima.org.br>',
+        from: '"TCC INSF" <destiny.contato21@gmail.com>',
         to: para,
         subject: assunto,
         html: mensagem
