@@ -58,12 +58,6 @@ export default function Carrinho () {
 
                 <div className="resumo">
                     <Titulo>RESUMO DA COMPRA</Titulo>
-                    <div className="subtotal">
-                        SUBTOTAL (1 ITEM)
-                        <span>R$179,99</span>
-                    </div>
-
-
                     <hr/>
 
                     <div className="total">

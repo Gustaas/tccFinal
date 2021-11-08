@@ -1,6 +1,6 @@
 
 import { ContadorDiv } from "./styled";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -18,16 +18,21 @@ export default function Contador(props){
   }
   
   function remover(){
-    if (qtd === 0)
+    if (qtd === 1)
       return toast.warning("Número mínimo de item atingido");
     setQtd(qtd - 1)
   }
+
+  useEffect( ()=> {
+    props.onChange(qtd);
+  }, [qtd])
   
   return (
        
         <ContadorDiv>
-          <ToastContainer/>
-          
+          <div className="menos">
+            Qtd: {qtd}
+          </div>
           <div className="menos" onClick={remover}>
             -
           </div>
