@@ -86,5 +86,14 @@ const Container = styled.div`
 .registrar a{
   color: black;
 }
+
+.reg-camposenha a{
+  text-decoration: none;
+  color: black;
+}
+
+.reg-conta a{
+  text-decoration: none;
+}
 `
 export {Container}
