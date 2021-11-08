@@ -1,7 +1,7 @@
 import { Container } from "../../produtos-femininos/styled";
 import Cabecalho from "../../../../components/cabecalho";
 import { useState, useEffect, useRef } from "react";
-
+import Produto from '../../produto-compo'
 import Api from "../../../../service/api";
 import Paginas from "../../paginacao/index";
 import LoadingBar from 'react-top-loading-bar';
@@ -44,17 +44,7 @@ export default function Flamengo() {
 
       <div class="container-produto">
         {produto.map((item) =>
-          <div class="box">
-            <div class="prod">
-                <img src={item.img_imagem} alt=''/> 
-                <div class="nome-produto">{item.nm_produto}</div>
-                <div class="valor">{item.vl_preco}</div>
-                
-                <div class="adc-carrinho">
-                    <button> Adicionar ao carrinho </button>
-                </div>
-            </div>
-          </div>
+          <Produto info={item}/>
         )}
       </div>
       <div class="paginacao">
