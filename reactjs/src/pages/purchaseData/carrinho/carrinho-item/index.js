@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Container from './styled';
+import { Container } from './styled';
 import Contador from "../../../../components/contador"
 
 export default function CarrinhoItem(props) {
@@ -13,7 +13,7 @@ export default function CarrinhoItem(props) {
     }
 
     function remover() {
-        props.onRemove(produto.id);
+        props.onRemove(produto.id_produto);
     }
 
     return (
@@ -43,11 +43,14 @@ export default function CarrinhoItem(props) {
                     <div class="vl-preco">
                         R$: {produto.vl_preco}
                     </div>
-                    <div className="Remover" onClick={remover}>
+                    
+                </div>
+                <div className="contador" >
+                    <Contador onChange={alterarQtd} value={produto.qtd}/>
+                    <div className="remover" onClick={remover}>
                         <img src="https://cdn2.iconfinder.com/data/icons/designers-and-developers-icon-set/32/recyclebin-512.png" alt="" />
                     </div>
                 </div>
-                <Contador onChange={alterarQtd} value={produto.qtd}/>
 
             </div>
         </Container>
