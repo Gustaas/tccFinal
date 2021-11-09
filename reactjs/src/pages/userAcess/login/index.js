@@ -62,7 +62,7 @@ export default function Login() {
                              type="password"/>
                         <div class="reg-camposenha"> 
                             <Link to="/esqueciASenha">
-                            Esqueceu sua senha?</Link> 
+                            Esqueci a senha</Link> 
                         </div>
 
                         </div>

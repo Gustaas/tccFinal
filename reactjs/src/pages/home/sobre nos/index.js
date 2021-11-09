@@ -20,7 +20,7 @@ export default function sobreNos() {
                             O seu portfólio amplo e diversificado, abrange os principais esportes globais.
                         </div>
                         <div class="f1textoo2">
-                            Isto tem permitido à Destiny transcender barreirAs e buscar tornar-se uma das marcas mais reconhecidas do Brasil.
+                            Isto tem permitido à Destiny transcender barreiras e buscar tornar-se uma das lojas mais reconhecidas do Brasil.
                         </div>
                     </div>
                 </div>
@@ -31,10 +31,10 @@ export default function sobreNos() {
                 <div class="f2conteudo">
                     <div class="f2text">
                         <div class="f1textoo">
-                            ASSIM COMO ATLETAS, NÃO ACEITAMOS O MÉDIO.
+                            Assim como atletas, não aceitamos o médio.
                         </div>
                         <div class="f1textoo">
-                            O QUE FAZEMOS ESTÁ FOCADO NO ESPORTE E ATRAVÉS DELE MUDAREMOS VIDAS 
+                            O que fazemos está focado no esporte e através dele mudaremos vidas 
                         </div>
                     </div>
                     <div class="f2-img" >
@@ -49,9 +49,9 @@ export default function sobreNos() {
                     <div class="f3img"> <img alt='' src="../assets/images/vasco.jpeg"/> </div>
                     <div class="f3text">
                         <div class="f3textoo">
-                            NOS ESFORÇAREMOS PARA ROMPER E EXPANDIR LIMITAÇÕES, 
-                            SENDO ACESSÍVEL E INCLUINDO TODOS E TORNANDO O 
-                            AMBIENTE ESPORTIVO UM LUGAR INCLUSIVO. 
+                            Nos esforçaremos para romper e expandir limitações, 
+                            sendo acessível e incluindo todos e tornando o 
+                            ambiente esportivo um lugar inclusivo. 
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ export default function sobreNos() {
                 <div class="f4conteudo">
                     <div class="f4text">
                         <div class="f4textoo">
-                            ÉTICA, RESPEITO, INCLUSÃO E SUSTENTABILIDADE
+                            Ética, respeito, inclusão e sustentabilidade.
                         </div>
                     </div>
                     <div class="f4img">
