@@ -20,7 +20,7 @@ export default function Cabecalho() {
             <div class="menu-botao">
                 <Link to='/carrinho'><button><img src="/assets/images/carrinhoo.svg" alt="" width='20px' /></button></Link>
                 <div  className="botao-login">
-                    <Link to='/login'>Login</Link>
+                    <Link to='/login'>  <button><img class="img" src="/assets/images/login.jpg" alt="" width='23px'/> </button>         </Link>
                 </div>
             </div>
         </CabecalhoDiv>
