@@ -34,7 +34,7 @@ export default function Rodapé () {
 
                 <div className="row2">
                     <h1 className="contact">
-                        Fale Conosco
+                        Fale conosco
                     </h1>
                     <div className="email">
                     Contato@destiny.com

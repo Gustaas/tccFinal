@@ -24,7 +24,7 @@ export default function Pedidos(){
                                             <h1 class="titulo-produto"> Camisa São Paulo II 21/22 Rigoni Nº 77 </h1>
                                             <div class="cor">
                                                 <span>
-                                                COR:</span> Vermelho, Petro e Branco</div>
+                                                COR:</span> Vermelho, Preto e Branco</div>
                                             <div class="tamanho">
                                                 <span>
                                                 TAMANHO:</span> G</div>

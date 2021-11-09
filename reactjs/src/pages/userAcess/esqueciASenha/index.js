@@ -37,7 +37,7 @@ export default function Esqueci() {
       <LoadingBar color="red" ref={loading} />
 
         <Container>
-            <h1> Recuperação de SenhaA </h1>
+            <h1> Recuperação de Senha </h1>
             <div> </div>
             <div className="Email"> 
                 E-mail: <Input type="text" value={email} onChange={e=> setEmail(e.target.value) }  /> 

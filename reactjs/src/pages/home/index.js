@@ -9,7 +9,7 @@ export default function Home () {
         <Cabecalho/>
         <div class="faixa-1">
             <div class="info">
-                <div class="texto">O Melhor do Esporte Você encontra aqui</div>
+                <div class="texto">O Melhor do Esporte você encontra aqui.</div>
             </div>
         </div>
 
@@ -28,7 +28,7 @@ export default function Home () {
                     <div class="grandes-passos">
                     DÊ GRANDES PASSOS PARA O QUE DER E VIER COM A
                     </div>
-                <div class="fam">FAMÍLIA AIR MAX</div>
+                <div class="fam">FAMÍLIA AIR MAX.</div>
                 </div>
             </div>
         </div>
@@ -45,14 +45,14 @@ export default function Home () {
                 </div>
                 <div class="desc-tf">
                     <div class="preo">NÃO SE PREOCUPE COM O CANSAÇO, NÓS TE DAMOS</div>
-                    <div class="sup">O MÁXIMO APOIO COM ISSO</div>
+                    <div class="sup">O MÁXIMO APOIO COM ISSO.</div>
                 </div>
             </div>
         </div>
 
         <div class="faixa-4">
             <div class="geral-fut">
-            <div class="fut">Todos os Produtos</div>
+            <div class="fut">Todos os produtos</div>
             <div class="img-fut">
                 <Link to='/produtos/todos'>
                     <img src="./assets/images/barca.svg" alt="" />
@@ -60,14 +60,14 @@ export default function Home () {
                 </div>
             <div class="desc-fut">
                 <div class="vis">
-                VISTA-SE PARA ANDAR COM O MAIOR ESTILO NAS RUAS DE TODO MUNDO
+                VISTA-SE PARA ANDAR COM O MAIOR ESTILO NAS RUAS DE TODO MUNDO.
                 </div>
             </div>
             </div>
             
         </div>
         <div class="faixa-5">
-            <div class="categorias">Escolha seu time</div>
+            <div class="categorias">Escolha seu time do coração.</div>
                 <div class="box-img">
                     <div class="img-categ">
                         <Link to='/saopaulo'>

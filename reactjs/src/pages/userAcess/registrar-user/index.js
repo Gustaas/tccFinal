@@ -11,14 +11,14 @@ export default function registrarUser(){
             <div class="box-reg">
                 <div class="reg-titulo">Registrar</div>
                 <div class="reg-campos">
-                    <div class="reg-campotitulo">E-Mail:</div>
+                    <div class="reg-campotitulo">E-mail:</div>
                     <div class="reg-campos-input">
                         <input type="text">
                     </input>
                     </div>
                 </div>
                 <div class="reg-campos">
-                    <div class="reg-campotitulo">Confirmar E-mail:</div>
+                    <div class="reg-campotitulo">Confirmar e-mail:</div>
                     <div class="reg-campos-input">
                         <input type="text">
                     </input>
@@ -31,7 +31,7 @@ export default function registrarUser(){
                     </input>
                 </div>
                 <div class="reg-campos">
-                    <div class="reg-campotitulo">Confirmar Senha:</div>
+                    <div class="reg-campotitulo">Confirmar senha:</div>
                     <div class="reg-campos-input">
                         <input type="password">
                     </input>
@@ -40,7 +40,7 @@ export default function registrarUser(){
                 </div>
                 <div class="reg-conta">
                     <div class="a"> 
-                        <Link to='/login'>Já Possuo Conta | Fazer Login</Link>
+                        <Link to='/login'>Já possuo conta | Fazer login</Link>
                     </div>
                 </div>
 
