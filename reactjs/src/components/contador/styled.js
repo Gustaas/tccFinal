@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 
 export const ContadorDiv = styled.div`
- display: flex;
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   font-weight: 400;
 
   & > * {
@@ -11,6 +11,11 @@ export const ContadorDiv = styled.div`
     background-color: #f5f5f5;
     padding: 0.3em .8em;
     user-select: none;
+  }
+
+  .contador2 {
+   display: flex;
+   flex-direction: row;
   }
 
   .menos {

@@ -28,22 +28,26 @@ export default function Contador(props){
   }, [qtd])
   
   return (
-       
+        
         <ContadorDiv>
           <ToastContainer/>
-          <div className="menos">
-            Qtd: {qtd}
+          <div className='1'>
+            <div className="menos">
+              Qtd: {qtd}
+            </div>
           </div>
-          <div className="menos" onClick={remover}>
-            -
-          </div>
-    
-          <div className="quantidade">
-            {qtd}
-          </div>
-    
-          <div className="mais" onClick={adicionar}>
-            +
+          <div className="contador2">
+            <div className="menos" onClick={remover}>
+              -
+            </div>
+      
+            <div className="quantidade">
+              {qtd}
+            </div>
+      
+            <div className="mais" onClick={adicionar}>
+              +
+            </div>
           </div>
           
         </ContadorDiv>
