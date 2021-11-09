@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 
 
-import { ToastContainer} from "react-toastify";
+import { toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingBar from "react-top-loading-bar";
 
@@ -26,7 +26,7 @@ export default function Esqueci() {
         navigation.push('/reset', { email: email})
 
     } else {
-        alert(r.data.mensagem);
+        toast.error('E-mail inválido');
         loading.current.complete();
     }
 }
@@ -36,15 +36,23 @@ export default function Esqueci() {
       <ToastContainer />
       <LoadingBar color="red" ref={loading} />
 
-        <Container>
-            <h1> Recuperação de SenhaA </h1>
-            <div> </div>
-            <div className="Email"> 
-                E-mail: <Input type="text" value={email} onChange={e=> setEmail(e.target.value) }  /> 
+        
+      <div class="conteudo-reg">
+            <div class="box-reg">
+                <div class="reg-titulo">Alterar senha</div>
+                <div class="reg-campos">
+                    
+                    <div class="reg-campos-input">
+                    E-mail: <Input type="text" value={email} onChange={e=> setEmail(e.target.value) }  /> 
+                     </div>                 
+                </div>
+                <div class="reg-conta">
+                <a onClick={recuperar}> Enviar Código </a>
+                    </div>
+                </div>
             </div>
-            <button onClick={recuperar}> Enviar Código </button>
             
-        </Container>
+        
 
 
     </Container>

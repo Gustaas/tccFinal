@@ -30,6 +30,7 @@ export default function Contador(props){
   return (
        
         <ContadorDiv>
+          <ToastContainer/>
           <div className="menos">
             Qtd: {qtd}
           </div>
