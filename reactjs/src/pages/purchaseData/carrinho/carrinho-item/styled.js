@@ -5,7 +5,9 @@ const Container = styled.div`
     .desc {
         display: flex;
         flex-direction: row;
+        margin: .5em 0em;
 
+        width: 100%
         justify-content: center;
         align-items: center;
         font: 400 1.25em "Bebas Neue";
@@ -16,7 +18,9 @@ const Container = styled.div`
     }
 
     .remover {
-        align-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     .remover img {
@@ -25,6 +29,7 @@ const Container = styled.div`
 
     .info {
         font: 1.2em "Oswald";
+        width: 20em;
     }
 
     .contador {

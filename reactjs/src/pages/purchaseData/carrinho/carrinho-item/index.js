@@ -25,11 +25,7 @@ export default function CarrinhoItem(props) {
 
                 <div class="info">
                     <div class="titulo-produto"> 
-                            {produto.nm_produto} 
-                    </div>
-
-                    <div className="id-produto">
-                        ID:  {produto.id_produto}    
+                            {produto.nm_produto}
                     </div>
 
                     <div className="info-prod">  
@@ -37,7 +33,7 @@ export default function CarrinhoItem(props) {
                     </div>
 
                     <div class="tamanho">
-                        TAMANHO: <div></div> 
+                        TAMANHO: <span> {produto.tamanho} </span> 
                     </div>
                                             
                     <div class="vl-preco">
