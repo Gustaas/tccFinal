@@ -7,7 +7,16 @@ import { useHistory } from "react-router-dom";
 
 export default function Desc(props) {
     const [ produto] = useState(props.location.state);
+    const [tamanho, setTamanho] = useState('');
     const Navigation = useHistory();
+
+
+    function getTamanhoStyle(t) {
+        if (tamanho === t)
+            return { backgroundColor: '#000', color: '#fff'}
+        else 
+            return {}
+    }
 
     function comprar() {
         let carrinho = Cookie.get('carrinho');
@@ -15,8 +24,8 @@ export default function Desc(props) {
                             ? JSON.parse(carrinho)
                             : [];
 
-        if (carrinho.some(item => item.id === produto.id) === false)
-            carrinho.push({...produto, qtd: 1});
+        if (carrinho.some(item => item.id_produto === produto.id_produto) === false)
+            carrinho.push({...produto, qtd: 1, tamanho: tamanho});
 
         Cookie.set('carrinho', JSON.stringify(carrinho));
 
@@ -32,15 +41,15 @@ export default function Desc(props) {
                         <div class="nome-produto"> {produto.nm_produto} </div>
                         <div class="categoria">{produto.ds_genero} . {produto.ds_categoria}</div>
                         <div class="valores"> 
-                                <div class="preco"> R$:{produto.vl_preco}</div>
+                            <div class="preco"> R$:{produto.vl_preco}</div>
                         </div>
                         <div class="geral-tamanhos"> 
                             <div class="tamanhos"> Tamanhos </div>
                             <div class="opcoes-tamanho"> 
-                                <button>P</button>
-                                <button>M</button>
-                                <button>G</button>
-                                <button>GG</button>
+                                <button onClick={() => setTamanho('P')} style={getTamanhoStyle('P')}> P </button>
+                                <button onClick={() => setTamanho('M')} style={getTamanhoStyle('M')}> M </button>
+                                <button onClick={() => setTamanho('G')} style={getTamanhoStyle('G')}> G </button>
+                                <button onClick={() => setTamanho('GG')} style={getTamanhoStyle('GG')}> GG </button>
                             </div>
                             <div class="geral-carrinho">
                                 <button class="adc-carrinho" onClick={comprar}> ADICIONAR AO CARRINHO </button>

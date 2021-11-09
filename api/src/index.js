@@ -67,7 +67,7 @@ app.post('/validarCodigo', async (req, resp) => {
         resp.send( {status: 'erro', mensagem: 'Email Inválido'});
     }
     if(user.ds_codigo_rec !== req.body.codigo) {
-        resp.send({ status: 'erro', mensagem: 'cógigo inválido'})
+        resp.send({ status: 'erro', mensagem: 'código inválido'})
     }
     resp.send({ status: 'ok', mensagem: 'Código Validado'});
 })

@@ -10,6 +10,11 @@ const Container = styled.div `
   padding: 10em;
 }
 
+.img-produto img{
+width: 60vw;
+height: 50vh
+}
+
 .img-desc{
   display: flex;
   flex-direction: column;
