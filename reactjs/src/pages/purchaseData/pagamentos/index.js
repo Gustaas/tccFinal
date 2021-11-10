@@ -22,22 +22,6 @@ export default function Pagamento () {
         setProdutos(carrinho);
     }
 
-    function removerProduto(id) {
-        let carrinho = produtos.filter(item => item.id_produto !== id);
-
-        Cookie.set('carrinho', JSON.stringify(carrinho));
-
-        setProdutos([...carrinho])
-    }
-
-    function alterarProduto(id, qtd) {
-
-        let produtoAlterado = produtos.filter(item => item.id_produto === id)[0];
-        produtoAlterado.qtd = qtd;
-
-        Cookie.set('carrinho', JSON.stringify(produtos));
-    }
-
     function getCartao(c) {
         if (opcao === c)
             return { backgroundColor: 'white', border: '1px solid gray'}
