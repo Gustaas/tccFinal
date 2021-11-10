@@ -47,7 +47,7 @@ export default function Esqueci() {
                      </div>                 
                 </div>
                 <div class="reg-conta">
-                <a onClick={recuperar}> Enviar Código </a>
+                <button onClick={recuperar}> Enviar Código </button>
                     </div>
                 </div>
             </div>

@@ -52,7 +52,7 @@ export const Container = styled.div`
     padding: 1em;
   }
 
-  .reg-conta a{
+  .reg-conta button{
       text-decoration: none;
   }
 

@@ -3,7 +3,6 @@ import Cookie from 'js-cookie';
 import Cabecalho from '../../../components/cabecalho/index';
 import { Button } from '../../../components/button/styled';
 import { useState, useEffect } from 'react';
-import { generateKey } from 'crypto';
 import PagamentoItem from './pagamento item';
 
 export default function Pagamento () {

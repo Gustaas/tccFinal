@@ -3,7 +3,7 @@ import { Container } from './styled';
 
 export default function PagamentoItem(props) {
 
-    const [produto, setProduto] = useState(props.info)
+    const [produto] = useState(props.info)
 
     return (
         <Container>
