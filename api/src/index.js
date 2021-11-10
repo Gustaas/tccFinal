@@ -1,5 +1,5 @@
 import db from './db.js'
-import express from 'express'
+import express, { response } from 'express'
 import cors from 'cors'
 import Sequelize from 'sequelize';
 import enviarEmail from "./email.js";
@@ -9,21 +9,6 @@ const { op, col, fn } = Sequelize;
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-
-app.post('/login', async(req, resp) => {
-    const user = await db.infoa_dtn_tb_cliente.findOne({
-        where: {
-            ds_email: req.body.email,
-            ds_senha: req.body.senha
-        }
-    })
-    if (!user) {
-        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
-    } else 
-        resp.send({status: 'ok', nome: user.nm_cliente});
-        
-})
 
 
 app.post('/esqueciASenha', async(req, resp) => {
@@ -92,15 +77,28 @@ app.put('/resetSenha', async (req, resp) => {
 })
     
 
+app.post('/login', async (req, resp) => {
 
+    try {
+        let usuParam = req.body;
 
-
-
-
-
-
-
-
+        let u = await db.infoa_dtn_tb_cliente.findOne({ where: { nm_cliente: usuParam.nome} })
+        if (u !== null)
+            return resp.send({erro: 'Usuário já existe'});
+        await db.infoa_dtn_tb_cliente.create({
+            nm_cliente: usuParam.nome,
+            nr_contato: usuParam.numero,
+            nr_cpf: usuParam.cpf,
+            ds_endereco: usuParam.endereco,
+            ds_email: usuParam.email,
+            bt_ativo: 1,
+            ds_senha: usuParam.senha
+        })
+        resp.send(r);
+    } catch (e) {
+        resp.send({ erro: 'ocorreu um erro!'})
+    }
+});
 
 
 app.get('/login', async(req, resp) => {
@@ -120,6 +118,7 @@ app.get('/login', async(req, resp) => {
 
         resp.sendStatus(200);
 });
+
 
 app.get('/produto-todos', async (req, resp) => {
     try {
