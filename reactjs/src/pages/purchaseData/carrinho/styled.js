@@ -44,6 +44,11 @@ height: 100vh;
     font: 1.2em "Bebas Neue";
 }
 
+.finalizar button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
 .continuar button {
     margin: 1em;
     padding: 0.1em;
@@ -53,6 +58,12 @@ height: 100vh;
     outline: none;
     font: 1.2em "Bebas Neue";
 }
+
+.continuar button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
 
 .resumo {
     margin: 0em 5em;

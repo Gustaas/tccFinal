@@ -56,7 +56,7 @@ export default function registrarUser(){
                         </div>
                     </div>
 
-                    <div class="reg-a"> Registrar
+                    <div class="reg-a"> Registrar usuário
                     </div>
                     <div class="reg-conta">
                         <div class="a"> 

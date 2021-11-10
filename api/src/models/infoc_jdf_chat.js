@@ -1,42 +1,38 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infoc_tdv_endereco extends Model {
+export default class infoc_jdf_chat extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_endereco: {
+    id_chat: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
+      primaryKey: true
     },
-    id_cliente: {
+    id_pedido: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'infoc_jdf_pedido',
+        key: 'id_pedido'
+      }
     },
-    nm_rua: {
+    ds_mensagem: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    ds_cep: {
-      type: DataTypes.STRING(16),
+    dt_mensagem: {
+      type: DataTypes.DATE,
       allowNull: true
     },
-    ds_numero: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    ds_bairro: {
-      type: DataTypes.STRING(200),
-      allowNull: true
-    },
-    ds_complemento: {
-      type: DataTypes.STRING(200),
+    bt_enviadoAdm: {
+      type: DataTypes.BOOLEAN,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infoc_tdv_endereco',
+    tableName: 'infoc_jdf_chat',
     timestamps: false,
     indexes: [
       {
@@ -44,18 +40,18 @@ export default class infoc_tdv_endereco extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_endereco" },
+          { name: "id_chat" },
         ]
       },
       {
-        name: "id_cliente",
+        name: "id_pedido",
         using: "BTREE",
         fields: [
-          { name: "id_cliente" },
+          { name: "id_pedido" },
         ]
       },
     ]
   });
-  return infoc_tdv_endereco;
+  return infoc_jdf_chat;
   }
 }

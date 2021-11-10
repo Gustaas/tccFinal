@@ -47,7 +47,7 @@ input {
   .box-reg {
     border: solid 1px black;
     box-shadow: 0px 2px 3px 0px #888;
-    height: 30em;
+    height: 33em;
     width: 23em;
     padding: 2em 3.2em;
   }

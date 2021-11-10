@@ -1,8 +1,50 @@
 import {Container} from './styled';
+import Cookie from 'js-cookie';
 import Cabecalho from '../../../components/cabecalho/index';
 import { Button } from '../../../components/button/styled';
+import { useState, useEffect } from 'react';
+import { generateKey } from 'crypto';
+import PagamentoItem from './pagamento item';
 
 export default function Pagamento () {
+    const [opcao, setOpcao] = useState('');
+    const [produtos, setProdutos] = useState([])
+    useEffect(carregarCarrinho, []);
+
+    function carregarCarrinho() {
+        let carrinho = Cookie.get('carrinho');
+        carrinho = carrinho != null
+                            ? JSON.parse(carrinho)
+                            : [];
+        
+        console.log(carrinho);
+
+        setProdutos(carrinho);
+    }
+
+    function removerProduto(id) {
+        let carrinho = produtos.filter(item => item.id_produto !== id);
+
+        Cookie.set('carrinho', JSON.stringify(carrinho));
+
+        setProdutos([...carrinho])
+    }
+
+    function alterarProduto(id, qtd) {
+
+        let produtoAlterado = produtos.filter(item => item.id_produto === id)[0];
+        produtoAlterado.qtd = qtd;
+
+        Cookie.set('carrinho', JSON.stringify(produtos));
+    }
+
+    function getCartao(c) {
+        if (opcao === c)
+            return { backgroundColor: 'white', border: '1px solid gray'}
+        else 
+            return {}
+    }
+
     return (
         <Container>
 
@@ -13,78 +55,50 @@ export default function Pagamento () {
             <div className="box-container">
 
                 <div className="container-pagamento">
-
                     <div className="Cartão">
+                    <button onClick={() => setOpcao('Mastercard')} style ={getCartao('Mastercard')}>
                         <div className="imagem">
-                        <input type="radio"/>
                         <img src="/assets/images/mastercard.svg" alt=""/>
                             CARTÃO MASTERCARD
                         </div>
-                    </div>
+                    </button>
 
                     <hr/>
-
-                    <div className="Cartão">
+                    <button onClick={() => setOpcao('Cielo')} style ={getCartao('Cielo')}>
                         <div className="imagem">
-                        <input type="radio"/>
                         <img src="/assets/images/elo.png" alt=""/>
                             CARTÃO CIELO
                         </div>
-                    </div>
-
+                    </button>
                     <hr/>
-
-                    <div className="Cartão">
+                    <button onClick={() => setOpcao('Pix')} style ={getCartao('Pix')}>
                         <div className="imagem">
-                        <input type="radio"/>
                         <img src="/assets/images/pix.svg" alt=""/>
                             PIX
                         </div>
-                    </div>
-
+                    </button>
                     <hr/>
 
-                    <div className="Cartão">
+                    <button onClick={() => setOpcao('Boleto')} style ={getCartao('Boleto')}>
                         <div className="imagem">
-                        <input type="radio"/>
-                        <img src="/assets/images/cartão.png" alt=""/>
-                            ADICIONAR UM NOVO CARTÃO
-                        </div>
-                    </div>
-
-                    <hr/>
-
-                    <div className="Cartão">
-                        <div className="imagem">
-                        <input type="radio"/>
                         <img src="/assets/images/boleto.svg" alt=""/>
                             BOLETO BANCÁRIO
                         </div>
+                    </button>
                     </div>
 
                 </div>
 
                 <div className="box-pedido">
-
                         <div className="pedido-desc">
-                        
-                        <div className="desc">
-                            <div className="pedido-imagem">
-                                <img src="/assets/images/camisa_corinthians.svg" alt=""/>
-                            </div>
-
+                            <div className="desc">
+                            {produtos.map((item) =>
+                            <PagamentoItem key={item.id_produto}
+                            info={item}
+                            />
+                            )}
                             <div className="info">
-                                <h1 className="titulo-produto"> Camisa Corinthians II 21/22 s/n° Estádio Nike Masculina </h1>
-                                
-                                <div className="c-t">
-                                    <div className="cor">
-                                        
-                                        COR: <span> Preto e Branco</span></div>
-                                    <div className="tamanho">
-                                        TAMANHO:<span> G </span>
-                                    </div>
-                                </div>
-
+    
                                     <hr className="hr2"/>
 
                                     <div className="f-p">
@@ -111,8 +125,7 @@ export default function Pagamento () {
                         </div>
                     </div>
                         </div>
-                    
-            </div>
+                </div>
 
 
         </Container>

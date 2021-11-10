@@ -83,8 +83,9 @@ app.post('/login', async (req, resp) => {
         let usuParam = req.body;
 
         let u = await db.infoa_dtn_tb_cliente.findOne({ where: { nm_cliente: usuParam.nome} })
-        if (u !== null)
-            return resp.send({erro: 'Usuário já existe'});
+            if (u !== null)
+                return resp.send({erro: 'Usuário já existe'});
+
         await db.infoa_dtn_tb_cliente.create({
             nm_cliente: usuParam.nome,
             nr_contato: usuParam.numero,
@@ -92,11 +93,14 @@ app.post('/login', async (req, resp) => {
             ds_endereco: usuParam.endereco,
             ds_email: usuParam.email,
             bt_ativo: 1,
-            ds_senha: usuParam.senha
+            ds_senha: usuParam.senha,
+            ds_codigo_rec: 0
         })
+
         resp.send(r);
+
     } catch (e) {
-        resp.send({ erro: 'ocorreu um erro!'})
+        resp.send({ erro: e})
     }
 });
 

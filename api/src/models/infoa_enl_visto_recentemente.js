@@ -1,10 +1,10 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class infod_tif_comentario_post extends Model {
+export default class infoa_enl_visto_recentemente extends Model {
   static init(sequelize, DataTypes) {
   super.init({
-    id_comentario_post: {
+    id_visto_recentemente: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -12,27 +12,27 @@ export default class infod_tif_comentario_post extends Model {
     },
     id_usuario: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true,
+      references: {
+        model: 'infoa_enl_usuario',
+        key: 'id_usuario'
+      }
     },
-    id_comunidade: {
+    id_produto: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true,
+      references: {
+        model: 'infoa_enl_produto',
+        key: 'id_produto'
+      }
     },
-    ds_comentario: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    dt_comentario: {
+    dt_visualizacao: {
       type: DataTypes.DATE,
-      allowNull: false
-    },
-    id_like: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'infod_tif_comentario_post',
+    tableName: 'infoa_enl_visto_recentemente',
     timestamps: false,
     indexes: [
       {
@@ -40,7 +40,7 @@ export default class infod_tif_comentario_post extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id_comentario_post" },
+          { name: "id_visto_recentemente" },
         ]
       },
       {
@@ -51,21 +51,14 @@ export default class infod_tif_comentario_post extends Model {
         ]
       },
       {
-        name: "id_comunidade",
+        name: "id_produto",
         using: "BTREE",
         fields: [
-          { name: "id_comunidade" },
-        ]
-      },
-      {
-        name: "id_like",
-        using: "BTREE",
-        fields: [
-          { name: "id_like" },
+          { name: "id_produto" },
         ]
       },
     ]
   });
-  return infod_tif_comentario_post;
+  return infoa_enl_visto_recentemente;
   }
 }

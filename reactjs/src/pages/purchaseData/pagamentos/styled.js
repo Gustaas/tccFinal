@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
+
 body {
     margin: 0%;
 }
@@ -12,6 +13,15 @@ body {
 hr {
     width: 210%;
     color: #a9a9a9;
+}
+
+button {
+    background-color: #f5f5f5;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 .hr2 {

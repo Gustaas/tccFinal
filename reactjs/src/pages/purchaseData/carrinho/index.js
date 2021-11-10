@@ -4,11 +4,14 @@ import { Titulo } from "../../../components/titulo/styled";
 import CarrinhoItem from "./carrinho-item";
 import Cookie from "js-cookie";
 import AproveiteTambém from "./enjoy";
+import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Carrinho () {
     const [produtos, setProdutos] = useState([]);
     useEffect(carregarCarrinho, []);
+    const Navigation = useHistory();
 
     function carregarCarrinho() {
         let carrinho = Cookie.get('carrinho');
@@ -67,11 +70,15 @@ export default function Carrinho () {
 
                     <div className="botoes">
                         <div className="finalizar">
-                            <button class="finalizar">FINALIZAR COMPRA</button>
+                            <Link to='/pagamento'>
+                                <button class="finalizar">FINALIZAR COMPRA</button>
+                            </Link>
                         </div>
 
                         <div className="continuar">
-                            <button class="continuar">CONTINUAR COMPRANDO</button>
+                            <Link to='/produtos/todos'>
+                                <button class="continuar"> CONTINUAR COMPRANDO </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
