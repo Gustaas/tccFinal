@@ -150,10 +150,6 @@ const Container = styled.div `
     padding: 5em;
     }
 
-    .box-img{
-
-    }
-
     .img-categ img {
         width: 3em;
         height: 3em;
@@ -222,6 +218,34 @@ const Container = styled.div `
     }
 
     
+    @media (max-width: 767px) {
+
+
+
+    .box-img, .rodape {
+
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .box-img img {
+        width: 3em;
+        height: 3em;
+        padding: 0.5em 0em;
+    }
+
+    .box-cartao > div {
+        width: 4em;
+        padding: 0em 0.5em;
+    }
+
+    .box-cartao img {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    }
 
 `
 
