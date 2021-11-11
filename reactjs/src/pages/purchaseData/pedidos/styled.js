@@ -209,5 +209,28 @@ button {
 .pedido-imagem img {
     height: 180px;
 }
+
+
+
+
+
+@media (max-width: 400px) {
+
+.box-container-pedio > div {
+    flex-direction: column;
+}
+
+.box-pedido, .box-pedido-1, .box-pedido-2 {
+    flex-direction: column;
+}
+
+.container-pedido, .s-p {
+    flex-direction: column;
+    align-items: center;
+    width: 5em;
+    height: 5em;
+}
+
+}
 `
 export{Container}
