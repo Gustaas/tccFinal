@@ -3,7 +3,7 @@ import { Titulo } from "../../../../components/titulo/styled";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import CabeçalhoAdm from '../../../../components/cabeçalho adm/index'
 import Api from "../../../../service/api";
 import { useState} from "react";
 
@@ -15,14 +15,14 @@ export default function CadastrarProduto () {
     const [ preco, setPreco ] = useState (0);
     const [ genero, setGenero ] = useState ('');
     const [ categoria, setCategoria ] = useState ('');
-    const [ tamanho, setTamanho ] = useState (0);
+    const [ time, setTime ] = useState ('');
     const [ img, setImg] = useState ('');
     const [ desc, setDesc ] = useState ('')
 
     async function inserir() {
-        if (nome !=='' && preco > 0 && categoria !=='' && genero !== '' && img !=='' && desc !=='' && tamanho > 0 && tamanho < 34 )
+        if (nome !=='' && preco > 0 && categoria !=='' && genero !== '' && img !=='' && desc !=='' && time !='' )
             {
-                let r = await api.inserir(nome, genero, desc, categoria, preco, tamanho, img);
+                let r = await api.inserir(nome, genero, desc, categoria, preco, img, time);
                 if (r.erro)
                     toast.dark('Erro')
                 else
@@ -30,7 +30,6 @@ export default function CadastrarProduto () {
         } else {
             toast.dark('Campos Inválidos')
         }
-        limparCampos();
     }
 
     function limparCampos () {
@@ -38,13 +37,14 @@ export default function CadastrarProduto () {
         setPreco('')
         setCategoria('')
         setGenero('')
-        setTamanho(0)
         setImg('');
         setDesc('');
+        setTime('');
     }
 
     return (
         <Container>
+            <CabeçalhoAdm/>
             <ToastContainer/>
             <div className="container">
             <Titulo>ADICIONAR PRODUTO</Titulo>
@@ -71,8 +71,8 @@ export default function CadastrarProduto () {
                                             <input type="text" value={genero} onChange={e => setGenero(e.target.value)} />
                                         </div>
                                         <div className="cores">
-                                            CORES:
-                                            <input type="text"/>
+                                            Time:
+                                            <input type="text" value={time} onChange={e => setTime(e.target.value)}/>
                                         </div>
                                     </div>
 
@@ -81,11 +81,6 @@ export default function CadastrarProduto () {
                                         <div className="categoria">
                                             CATEGORIA:
                                             <input type="text" value={categoria} onChange={e => setCategoria(e.target.value)}/>
-                                        </div>
-
-                                        <div className="cores">
-                                            TAMANHOS:
-                                            <input type="text" value={tamanho} onChange={e => setTamanho(e.target.value)} />
                                         </div>
                                     </div>
 
@@ -102,7 +97,7 @@ export default function CadastrarProduto () {
 
                             <div className="box-acoes">
                                 <div className="imagem">
-                                    <img src="/assets/images/calcado.svg" alt=""/>
+                                    <img src={img} alt=""/>
                                 </div>
 
                                 <div className="cadastrar">

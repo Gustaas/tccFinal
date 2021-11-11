@@ -7,6 +7,10 @@ export const Container = styled.div`
     font: "Bebas Neue";
 }
 
+table {
+    border: 1px solid #6CC3DF;
+}
+
 thead, .a {
 
         background-color: #6CC3DF;
@@ -29,6 +33,13 @@ td {
         justify-items: center;
         align-items: center;
         font: 1.2em "Bebas Neue";
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .alternado {

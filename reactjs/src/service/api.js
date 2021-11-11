@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'https://destinyfrei.herokuapp.com'
+    baseURL: 'http://localhost:3030/'
 })
 
 export default class Api {
@@ -15,6 +15,11 @@ export default class Api {
         return r.data;
     }
 
+    async listarAdm() {
+        let r = await api.get('/produto-adm');
+        return r.data;
+    }
+
     async listarTime(pagina, time){
 
         let r = await api.get(`/produto-time/${time}?page=${pagina}`);
@@ -22,12 +27,12 @@ export default class Api {
         return r.data;
     }
 
-    async inserir( nome, genero, descricao, categoria, preco, tamanho, img){
-        let r = await api.post('/produto', { nome, genero, descricao, categoria, preco, tamanho, img} );
+    async inserir( nome, genero, descricao, categoria, preco, img, time){
+        let r = await api.post('/produto', { nome, genero, descricao, categoria, preco, img, time} );
         return r.data;
     }
 
-    async alterar(id, nome, descricao, categoria, preco, tamanho, img) {
+    async alterar(id, nome, descricao, categoria, preco, img) {
        let r = await api.put(`/produto/${id}`, { nome, categoria, preco, img, descricao});
        return r.data;
     }

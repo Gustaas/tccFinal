@@ -111,6 +111,14 @@ app.get('/login', async(req, resp) => {
         resp.sendStatus(200);
 });
 
+app.get('/produto-adm', async (req, resp) => {
+    try {
+        const r = await db.infoa_dtn_tb_produto.findAll({order: [[ 'id_produto', 'desc' ]]});
+        resp.send(r);
+    } catch (e) {
+        resp.send({erro: e.toString()});
+    }
+})
 
 app.get('/produto-todos', async (req, resp) => {
     try {
@@ -217,7 +225,7 @@ app.get('/produto-time/:time', async (req, resp) => {
 
 app.post('/produto', async (req, resp) => {
     try {
-        let {nome, genero, descricao, categoria, preco, tamanho, img} = req.body;
+        let {nome, genero, descricao, categoria, preco, img, time} = req.body;
 
         let r = await db.infoa_dtn_tb_produto.create({
             nm_produto: nome,
@@ -226,8 +234,8 @@ app.post('/produto', async (req, resp) => {
             ds_descricao: descricao,
             ds_categoria: categoria,
             vl_preco: preco,
-            id_tamanho: tamanho,
-            img_imagem: img
+            img_imagem: img,
+            ds_time: time
         })
         resp.send(r);
 

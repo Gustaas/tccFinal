@@ -1,128 +1,54 @@
 import { Container } from "./styled";
-import  "../../../../index.css";
-import {Link} from "react-router-dom";
+import CabecalhoAdm from "../../../../components/cabeçalho adm";
+import Api from "../../../../service/api";
+import { useEffect, useState } from "react";
+
+const api = new Api();
+
 export default function Produtos () {
+    
+    const [produto, setProduto] = useState([]);
+
+    const listar = async() => {
+        const produtosr = await api.listarAdm();
+        console.log(produtosr);
+        setProduto(produtosr);
+    }
+
+    useEffect(() => {
+        listar();
+      },
+      [])
+
     return (
         <Container>
-
+            <CabecalhoAdm/>
+            
             <div className="conteudo">
-
-                        <div className="a">
-
-                    
-                        <div className="botao1">
-                             <button>
-                                 <Link to ="/admin/cadastrar" style={{textDecoration: "none"}}>
-                                 ADICIONAR NOVO PRODUTO
-                                 </Link></button>
-                         </div>
-                        <div className="botao2">
-                            <input type="text" placeholder="PESQUISAR PRODUTO"/>
-                            <img src="../../../../../public/assets/search.svg" alt=""/>
-                        </div>
-                        </div>
                 <table>
                 <thead className="cabecalho">
                 <tr>
                         <th>ID DO PRODUTO</th>
                         <th>NOME</th>
                         <th>PREÇO</th>
-                        <th>CADASTRADO EM</th>
+                        <th>GÊNERO</th>
                         <th>CATEGORIA</th>
+                        <th>TIME</th>
                         <th>AÇÕES</th>
                 </tr>    
                 </thead>
-
-                <tr>
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr className="alternado">
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr>
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr className="alternado">
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr>
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr className="alternado">
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr>
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr className="alternado">
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr>
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-
-                <tr className="alternado">
-                    <td> 1 </td>
-                    <td> TÊNIS NIKE AIR FORCE 1 CRATER</td>
-                    <td> R$749,99</td>
-                    <td> 25/09/2021 </td>
-                    <td> CALÇADOS</td>
-                    <td> <img src="../../../../assets/images/editar.svg" alt=""/></td>
-                </tr>
-                </table>
+                {produto.map((item) => 
+                    <tr>
+                        <td> {item.id_produto} </td>
+                        <td> {item.nm_produto} </td>
+                        <td> {item.vl_preco}</td>
+                        <td> {item.ds_genero} </td>
+                        <td> {item.ds_categoria} </td>
+                        <td> {item.ds_time} </td>
+                        <td> <img src="" alt=""/> </td>
+                    </tr>
+                )}
+            </table>
             </div>
         </Container>
     )
