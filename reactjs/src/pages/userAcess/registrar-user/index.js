@@ -98,7 +98,7 @@ export default function RegistrarUser(){
 
                         
 
-                        <div class="reg-a"> <a onClick={registrar}>
+                        <div class="reg-a"> <a onClick={registrar}> Criar conta
                         
 
                         </a>
@@ -106,7 +106,7 @@ export default function RegistrarUser(){
                         </div>
                         <div class="reg-conta">
                             <div class="a"> 
-                                <Link to='/login'>Já possuo uma conta </Link>
+                                <Link to='/login'>Já possuo uma conta</Link>
                             </div>
                         </div>
 

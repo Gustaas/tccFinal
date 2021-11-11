@@ -98,6 +98,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: underline;
     
     padding: 1em;
   }
@@ -107,6 +108,8 @@ input {
     text-decoration: underline;
   }
 
-
+  .reg-conta a{
+    color: black;
+  }
 `
 export {Container}
