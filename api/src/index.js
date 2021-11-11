@@ -277,7 +277,7 @@ app.delete('/produto/:id', async (req, resp) => {
     }
 })
 
-app.get('/cliente', async (req, resp) => {
+app.get('/novo-cliente', async (req, resp) => {
     try{
         let clientes = await db.infoa_dtn_tb_cliente.findAll({order: [['id_cliente', 'desc']]})
         resp.send(clientes);
@@ -286,7 +286,7 @@ app.get('/cliente', async (req, resp) => {
     }
 })
 
-app.post('/cliente', async (req, resp) => {
+app.post('/novo-cliente', async (req, resp) => {
     try {
         let {email, senha, nome, cpf, telefone} = req.body
 
