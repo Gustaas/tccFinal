@@ -38,8 +38,9 @@ export default function RegistrarUser(){
             navigation.push('/')
 
         } else {
-            toast.error(r.data.mensagem);
-            loading.current.complete();
+
+            navigation.push('/erro-reg')
+
         }
     }
 
@@ -70,7 +71,7 @@ export default function RegistrarUser(){
                         </div>
                         </div>
                         <div class="reg-campos">
-                            <div class="reg-campotitulo">Senha:</div>
+                            <div class="reg-campotitulo">Escolha uma Senha:</div>
                             <div class="reg-campos-input">
                             <Input value={senha}
                             onChange={e => setSenha(e.target.value)}
@@ -78,7 +79,7 @@ export default function RegistrarUser(){
                             </div>
                         </div>
                         <div class="reg-campos">
-                            <div class="reg-campotitulo">CPF</div>
+                            <div class="reg-campotitulo">CPF:</div>
                             <div class="reg-campos-input">
                             <Input value={cpf}
                             onChange={e => setCpf(e.target.value)}
@@ -87,7 +88,7 @@ export default function RegistrarUser(){
                         </div>
 
                         <div class="reg-campos">
-                            <div class="reg-campotitulo">Telefone </div>
+                            <div class="reg-campotitulo">Telefone: </div>
                             <div class="reg-campos-input">
                             <Input value={tel}
                             onChange={e => setTel(e.target.value)}
@@ -97,9 +98,10 @@ export default function RegistrarUser(){
 
                         
 
-                        <div class="reg-a"> <Button onClick={registrar}> Entrar
+                        <div class="reg-a"> <a onClick={registrar}>
+                        
 
-                        </Button>
+                        </a>
 
                         </div>
                         <div class="reg-conta">
