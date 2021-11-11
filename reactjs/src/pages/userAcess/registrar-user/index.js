@@ -24,7 +24,7 @@ export default function RegistrarUser(){
 
     async function registrar() {
         loading.current.continuousStart();
-        const r = await axios.post(`http://localhost:3030/cliente` , 
+        const r = await axios.post(`http://localhost:3030/novo-cliente` , 
         { email : email, 
           senha: senha,
           nome: nome,
