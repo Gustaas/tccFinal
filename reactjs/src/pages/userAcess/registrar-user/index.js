@@ -106,7 +106,7 @@ export default function RegistrarUser(){
                         </div>
                         <div class="reg-conta">
                             <div class="a"> 
-                                <Link to='/login'>Já possuo conta | Fazer login</Link>
+                                <Link to='/login'>Já possuo uma conta </Link>
                             </div>
                         </div>
 
