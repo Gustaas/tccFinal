@@ -20,6 +20,11 @@ export default class Api {
         return r.data;
     }
 
+    async listarClientesAdm () {
+        let r = await api.get('/cliente-adm');
+        return r.data;
+    }
+
     async listarTime(pagina, time){
 
         let r = await api.get(`/produto-time/${time}?page=${pagina}`);

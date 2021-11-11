@@ -1,36 +1,49 @@
-
 import {Container} from './styled';
+import CabecalhoAdm from "../../../components/cabeçalho adm";
+import { useEffect, useState } from "react";
+import Api from '../../../service/api';
+
+const api = new Api();
 
 export default function ClientesAdmin () {
+    const [cliente, setCliente] = useState([]);
+
+    const listar = async() => {
+        const produtosr = await api.listarClientesAdm();
+        setCliente(produtosr);
+    }
+
+      useEffect(() => {
+        listar();
+      },
+      [])
+
+      
+
     return (
         <Container>
+            <CabecalhoAdm/>
             <table>
         <thead>
             <th>ID CLIENTE</th>
             <th>NOME DO CLIENTE</th>
             <th>CPF DO CLIENTE </th>
-            <th>CIDADE</th>
-            <th>UF</th>
-            <th>CEP</th>
             <th>TELEFONE</th>
             <th>E-MAIL</th>
             <th>AÇÕES</th>
         </thead>
+        {cliente.map((item) =>
+            <tr className="cor-alternada">
+                <td> {item.id_cliente} </td>
+                <td> {item.nm_cliente} </td>
+                <td> {item.ds_cpf} </td>
+                <td> {item.ds_telefone} </td>
+                <td> {item.ds_email} </td>
+                <td>  </td>
+            </tr>
+        )}
 
-        <tr className="cor-alternada">
-            <td>1</td>
-            <td>RAFAELLA</td>
-            <td>123.456.789-10</td>
-            <td>SÃO PAULO</td>
-            <td>SP</td>
-            <td>04571-150</td>
-            <td>(11)9 1234-5679</td>
-            <td>EXEMPLO1@GMAIL.COM</td>
-            <td>  </td>
-        </tr>
-
-</table>
-
+        </table>
         </Container>
     )
 }

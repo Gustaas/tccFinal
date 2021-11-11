@@ -91,7 +91,14 @@ app.post('/login', async(req, resp) => {
         
 })
 
-
+app.get('/cliente-adm', async (req, resp) => {
+    try {
+        let r = await db.infoa_dtn_tb_cliente.findAll();
+        resp.send(r)
+    } catch (e) {
+        resp.send(e);
+    }
+})
 
 app.get('/login', async(req, resp) => {
     let login = req.body;

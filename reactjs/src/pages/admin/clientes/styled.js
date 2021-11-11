@@ -9,6 +9,10 @@ const Container = styled.div`
     flex-direction: column;
     align-content: space-evenly;
 }
+
+table {
+    border: 1px solid #6CC3DF;
+}
     
 thead, .a {
 background-color: #6CC3DF;
@@ -31,6 +35,7 @@ align-content: center;
 justify-items: center;
 align-items: center;
 font: 400 1.2em "Oswald";
+border: 1px solid #6CC3DF;
 }
 
 .alternado {

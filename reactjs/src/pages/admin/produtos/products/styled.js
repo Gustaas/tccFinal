@@ -33,6 +33,7 @@ td {
         justify-items: center;
         align-items: center;
         font: 1.2em "Bebas Neue";
+        border: 1px solid #6CC3DF;
 }
 
 .conteudo {
