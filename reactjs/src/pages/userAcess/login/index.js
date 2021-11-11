@@ -21,7 +21,7 @@ export default function Login() {
     const [ senha, setSenha] = useState('');
 
     const loading = useRef(null); 
-    const navigation = useHistory();
+    const navigation = useHistory(); 
 
     async function logar() {
         loading.current.continuousStart();
