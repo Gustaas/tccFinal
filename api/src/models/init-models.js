@@ -5,14 +5,15 @@ import _infoa_dtb_tb_genero from  "./infoa_dtb_tb_genero.js";
 import _infoa_dtb_tb_livro from  "./infoa_dtb_tb_livro.js";
 import _infoa_dtb_tb_venda from  "./infoa_dtb_tb_venda.js";
 import _infoa_dtb_tb_venda_item from  "./infoa_dtb_tb_venda_item.js";
-import _infoa_dtn_tb_adm from  "./infoa_dtn_tb_adm.js";
 import _infoa_dtn_tb_avaliacao from  "./infoa_dtn_tb_avaliacao.js";
 import _infoa_dtn_tb_cliente from  "./infoa_dtn_tb_cliente.js";
 import _infoa_dtn_tb_endereco from  "./infoa_dtn_tb_endereco.js";
 import _infoa_dtn_tb_favoritos from  "./infoa_dtn_tb_favoritos.js";
 import _infoa_dtn_tb_produto from  "./infoa_dtn_tb_produto.js";
 import _infoa_dtn_tb_tamanhos from  "./infoa_dtn_tb_tamanhos.js";
+import _infoa_dtn_tb_usuarios_adm from  "./infoa_dtn_tb_usuarios_adm.js";
 import _infoa_dtn_tb_venda from  "./infoa_dtn_tb_venda.js";
+import _infoa_dtn_tb_venda_item from  "./infoa_dtn_tb_venda_item.js";
 import _infoa_enl_cartao_credito from  "./infoa_enl_cartao_credito.js";
 import _infoa_enl_categoria from  "./infoa_enl_categoria.js";
 import _infoa_enl_chat from  "./infoa_enl_chat.js";
@@ -127,6 +128,9 @@ import _infoc_tht_login from  "./infoc_tht_login.js";
 import _infoc_tht_lugar from  "./infoc_tht_lugar.js";
 import _infoc_tht_pacote from  "./infoc_tht_pacote.js";
 import _infoc_tht_usuario from  "./infoc_tht_usuario.js";
+import _infod_ecm_tb_categorias from  "./infod_ecm_tb_categorias.js";
+import _infod_ecm_td_roupas_femi from  "./infod_ecm_td_roupas_femi.js";
+import _infod_ecm_td_roupas_masc from  "./infod_ecm_td_roupas_masc.js";
 import _infod_leo_agendamento from  "./infod_leo_agendamento.js";
 import _infod_leo_cliente from  "./infod_leo_cliente.js";
 import _infod_leo_funcionario from  "./infod_leo_funcionario.js";
@@ -166,14 +170,15 @@ export default function initModels(sequelize) {
   const infoa_dtb_tb_livro = _infoa_dtb_tb_livro.init(sequelize, DataTypes);
   const infoa_dtb_tb_venda = _infoa_dtb_tb_venda.init(sequelize, DataTypes);
   const infoa_dtb_tb_venda_item = _infoa_dtb_tb_venda_item.init(sequelize, DataTypes);
-  const infoa_dtn_tb_adm = _infoa_dtn_tb_adm.init(sequelize, DataTypes);
   const infoa_dtn_tb_avaliacao = _infoa_dtn_tb_avaliacao.init(sequelize, DataTypes);
   const infoa_dtn_tb_cliente = _infoa_dtn_tb_cliente.init(sequelize, DataTypes);
   const infoa_dtn_tb_endereco = _infoa_dtn_tb_endereco.init(sequelize, DataTypes);
   const infoa_dtn_tb_favoritos = _infoa_dtn_tb_favoritos.init(sequelize, DataTypes);
   const infoa_dtn_tb_produto = _infoa_dtn_tb_produto.init(sequelize, DataTypes);
   const infoa_dtn_tb_tamanhos = _infoa_dtn_tb_tamanhos.init(sequelize, DataTypes);
+  const infoa_dtn_tb_usuarios_adm = _infoa_dtn_tb_usuarios_adm.init(sequelize, DataTypes);
   const infoa_dtn_tb_venda = _infoa_dtn_tb_venda.init(sequelize, DataTypes);
+  const infoa_dtn_tb_venda_item = _infoa_dtn_tb_venda_item.init(sequelize, DataTypes);
   const infoa_enl_cartao_credito = _infoa_enl_cartao_credito.init(sequelize, DataTypes);
   const infoa_enl_categoria = _infoa_enl_categoria.init(sequelize, DataTypes);
   const infoa_enl_chat = _infoa_enl_chat.init(sequelize, DataTypes);
@@ -288,6 +293,9 @@ export default function initModels(sequelize) {
   const infoc_tht_lugar = _infoc_tht_lugar.init(sequelize, DataTypes);
   const infoc_tht_pacote = _infoc_tht_pacote.init(sequelize, DataTypes);
   const infoc_tht_usuario = _infoc_tht_usuario.init(sequelize, DataTypes);
+  const infod_ecm_tb_categorias = _infod_ecm_tb_categorias.init(sequelize, DataTypes);
+  const infod_ecm_td_roupas_femi = _infod_ecm_td_roupas_femi.init(sequelize, DataTypes);
+  const infod_ecm_td_roupas_masc = _infod_ecm_td_roupas_masc.init(sequelize, DataTypes);
   const infod_leo_agendamento = _infod_leo_agendamento.init(sequelize, DataTypes);
   const infod_leo_cliente = _infod_leo_cliente.init(sequelize, DataTypes);
   const infod_leo_funcionario = _infod_leo_funcionario.init(sequelize, DataTypes);
@@ -343,8 +351,12 @@ export default function initModels(sequelize) {
   infoa_dtn_tb_produto.hasMany(infoa_dtn_tb_avaliacao, { as: "infoa_dtn_tb_avaliacaos", foreignKey: "id_produto"});
   infoa_dtn_tb_favoritos.belongsTo(infoa_dtn_tb_produto, { as: "id_produto_infoa_dtn_tb_produto", foreignKey: "id_produto"});
   infoa_dtn_tb_produto.hasMany(infoa_dtn_tb_favoritos, { as: "infoa_dtn_tb_favoritos", foreignKey: "id_produto"});
+  infoa_dtn_tb_venda_item.belongsTo(infoa_dtn_tb_produto, { as: "id_produto_infoa_dtn_tb_produto", foreignKey: "id_produto"});
+  infoa_dtn_tb_produto.hasMany(infoa_dtn_tb_venda_item, { as: "infoa_dtn_tb_venda_items", foreignKey: "id_produto"});
   infoa_dtn_tb_produto.belongsTo(infoa_dtn_tb_tamanhos, { as: "id_tamanho_infoa_dtn_tb_tamanho", foreignKey: "id_tamanho"});
   infoa_dtn_tb_tamanhos.hasMany(infoa_dtn_tb_produto, { as: "infoa_dtn_tb_produtos", foreignKey: "id_tamanho"});
+  infoa_dtn_tb_venda.belongsTo(infoa_dtn_tb_venda_item, { as: "id_venda_item_infoa_dtn_tb_venda_item", foreignKey: "id_venda_item"});
+  infoa_dtn_tb_venda_item.hasMany(infoa_dtn_tb_venda, { as: "infoa_dtn_tb_vendas", foreignKey: "id_venda_item"});
   infoa_enl_produto.belongsTo(infoa_enl_categoria, { as: "id_categoria_infoa_enl_categorium", foreignKey: "id_categoria"});
   infoa_enl_categoria.hasMany(infoa_enl_produto, { as: "infoa_enl_produtos", foreignKey: "id_categoria"});
   infoa_enl_chat.belongsTo(infoa_enl_chat_usuario, { as: "id_chat_usuario_infoa_enl_chat_usuario", foreignKey: "id_chat_usuario"});
@@ -469,6 +481,8 @@ export default function initModels(sequelize) {
   infoc_tct_endereco.hasMany(infoc_tct_compra, { as: "infoc_tct_compras", foreignKey: "id_endereco"});
   infoc_tct_compra_item.belongsTo(infoc_tct_produto, { as: "id_produto_infoc_tct_produto", foreignKey: "id_produto"});
   infoc_tct_produto.hasMany(infoc_tct_compra_item, { as: "infoc_tct_compra_items", foreignKey: "id_produto"});
+  infoc_tdv_endereco.belongsTo(infoc_tdv_cliente, { as: "id_cliente_infoc_tdv_cliente", foreignKey: "id_cliente"});
+  infoc_tdv_cliente.hasMany(infoc_tdv_endereco, { as: "infoc_tdv_enderecos", foreignKey: "id_cliente"});
   infoc_tdv_favorito.belongsTo(infoc_tdv_cliente, { as: "id_cliente_infoc_tdv_cliente", foreignKey: "id_cliente"});
   infoc_tdv_cliente.hasMany(infoc_tdv_favorito, { as: "infoc_tdv_favoritos", foreignKey: "id_cliente"});
   infoc_tdv_forma_pagamento.belongsTo(infoc_tdv_cliente, { as: "id_cliente_infoc_tdv_cliente", foreignKey: "id_cliente"});
@@ -528,14 +542,15 @@ export default function initModels(sequelize) {
     infoa_dtb_tb_livro,
     infoa_dtb_tb_venda,
     infoa_dtb_tb_venda_item,
-    infoa_dtn_tb_adm,
     infoa_dtn_tb_avaliacao,
     infoa_dtn_tb_cliente,
     infoa_dtn_tb_endereco,
     infoa_dtn_tb_favoritos,
     infoa_dtn_tb_produto,
     infoa_dtn_tb_tamanhos,
+    infoa_dtn_tb_usuarios_adm,
     infoa_dtn_tb_venda,
+    infoa_dtn_tb_venda_item,
     infoa_enl_cartao_credito,
     infoa_enl_categoria,
     infoa_enl_chat,
@@ -650,6 +665,9 @@ export default function initModels(sequelize) {
     infoc_tht_lugar,
     infoc_tht_pacote,
     infoc_tht_usuario,
+    infod_ecm_tb_categorias,
+    infod_ecm_td_roupas_femi,
+    infod_ecm_td_roupas_masc,
     infod_leo_agendamento,
     infod_leo_cliente,
     infod_leo_funcionario,
