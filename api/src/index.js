@@ -1,5 +1,5 @@
 import db from './db.js'
-import express, { response } from 'express'
+import express from 'express'
 import cors from 'cors'
 import Sequelize from 'sequelize';
 import enviarEmail from "./email.js";
