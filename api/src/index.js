@@ -334,7 +334,9 @@ app.get('/cliente', async (req, resp) => {
     }
 })
 
-
+{/* a API verifica os dados do usuário dentro do banco de dados, para que caso haja dualidade de dados,
+    ela retorna que o usuário já existe. Caso contrário, ela insere as informações, permitindo futuros login's do mesmo usuário
+*/}
 app.post('/cliente', async (req, resp) => {
     try {
         let {email, senha, nome, cpf, telefone} = req.body
