@@ -119,6 +119,8 @@ app.post('/login', async(req, resp) => {
         
 })
 
+
+{/*a API busca os dados do usuário e os demonstra na tela administrativa de clientes*/}
 app.get('/cliente-adm', async (req, resp) => {
     try {
         let r = await db.infoa_dtn_tb_cliente.findAll();
