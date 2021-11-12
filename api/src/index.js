@@ -130,7 +130,7 @@ app.get('/cliente-adm', async (req, resp) => {
     }
 })
 
-
+{/*a API busca os dados dos produtos cadastrados e os demonstra na tela administrativa de produtos*/}
 app.get('/produto-adm', async (req, resp) => {
     try {
         const r = await db.infoa_dtn_tb_produto.findAll({order: [[ 'id_produto', 'desc' ]]});
@@ -140,6 +140,9 @@ app.get('/produto-adm', async (req, resp) => {
     }
 })
 
+
+{/*a API puxa todos os produtos cadastrados no banco de dados e os envia para a tela de todos os produtos,
+retornando 15 produtos por página e permitindo navegar por paginação*/}
 app.get('/produto-todos', async (req, resp) => {
     try {
 
