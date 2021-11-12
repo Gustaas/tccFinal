@@ -214,6 +214,10 @@ app.get('/produto/:genero', async (req, resp) => {
     }
 })
 
+
+{/*a API puxa todos os produtos cadastrados no banco de dados filtrados pela categoria de time
+e os envia para a tela de todos os produtos quando o usuário seleciona a opção de time na página inicial,
+retornando 15 produtos por página e permitindo navegar por paginação*/}
 app.get('/produto-time/:time', async (req, resp) => {
     try {
 
