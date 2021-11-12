@@ -297,38 +297,16 @@ app.get('/cliente', async (req, resp) => {
     }
 })
 
-<<<<<<< HEAD
-
-=======
-/*app.post('/novo-cliente', async (req, resp) => {
-    try {
-        let {email, senha, nome, cpf, telefone} = req.body
-
-        let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
-        if (u != null)
-            return resp.send({erro: 'Usuário já existe'}) 
-        let r = await db.infoa_dtn_tb_cliente.create({
-            ds_email: email,
-            ds_senha: senha,
-            nm_cliente: nome,
-            ds_cpf: cpf,
-            ds_telefone: telefone,
-            ds_codigo_rec: null
-        })
-        resp.send(r);
-    } catch (e) {
-        resp.send(e);
-    }
-})*/
->>>>>>> fd64a8acfa5ea56fdc237232c2cc7e7324535253
 
 app.post('/cliente', async (req, resp) => {
     try {
         let {email, senha, nome, cpf, telefone} = req.body
 
         let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
-        if (u != null)
-            return resp.send({erro: 'Usuário já existe'}) 
+        let u2 = await db.infoa_dtn_tb_cliente.findOne({where: {ds_email: email} })
+
+        if (u !== undefined || u2 !== undefined)
+            return resp.send({erro: 'Usuário já existe'})
         let r = await db.infoa_dtn_tb_cliente.create({
             ds_email: email,
             ds_senha: senha,

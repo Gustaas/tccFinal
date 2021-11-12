@@ -3,13 +3,13 @@ import Cabecalho from "../../../components/cabecalho";
 import { Titulo } from "../../../components/titulo/styled";
 import CarrinhoItem from "./carrinho-item";
 import Cookie from "js-cookie";
-import AproveiteTambém from "./enjoy";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Carrinho () {
     const [produtos, setProdutos] = useState([]);
     useEffect(carregarCarrinho, []);
+
 
     function carregarCarrinho() {
         let carrinho = Cookie.get('carrinho');
@@ -60,11 +60,12 @@ export default function Carrinho () {
                 <div className="resumo">
                     <Titulo>RESUMO DA COMPRA</Titulo>
                     <hr/>
-
+                            
                     <div className="total">
                         VALOR TOTAL
-                        <span>R$179,99</span>
+                        <span>{}</span>
                     </div>
+                    
 
                     <div className="botoes">
                         <div className="finalizar">
@@ -82,11 +83,6 @@ export default function Carrinho () {
                 </div>
 
 
-            </div>
-
-            <div className="conteudo2">
-                <Titulo>APROVEITE TAMBÉM</Titulo>
-                <AproveiteTambém/>
             </div>
         </Container>
     )

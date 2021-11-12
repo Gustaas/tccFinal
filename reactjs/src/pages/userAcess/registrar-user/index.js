@@ -17,6 +17,7 @@ export default function RegistrarUser(){
     const [ nome, setNome] = useState('');
     const [ cpf, setCpf  ]  = useState('');
     const [ tel, setTel] = useState('');
+    const [ endereco, setEndereco] = useState('');
 
     const loading = useRef(null); 
     const navigation = useHistory();
@@ -24,19 +25,24 @@ export default function RegistrarUser(){
 
     async function registrar() {
         try {
-        loading.current.continuousStart();
-        const r = await axios.post(`http://localhost:3030/cliente` , 
-        { email : email, 
-          senha: senha,
-          nome: nome,
-          cpf: cpf,
-          telefone : tel
-        });
+        if (email !== '' && senha !== '' && nome !=='' && cpf !== '' && tel !== '' && endereco !== '')
+        {
+            loading.current.continuousStart();
+            const r = await axios.post(`https://destinyfrei.herokuapp.com/cliente` , 
+            { email : email, 
+            senha: senha,
+            nome: nome,
+            cpf: cpf,
+            endereco: endereco,
+            telefone : tel
+            });
 
-        
-            navigation.push('/')
-            loading.current.complete()
-
+            
+                navigation.push('/')
+                loading.current.complete()
+        } else {
+            toast.error('Campos Inválidos')
+        }
         } catch (e) {
             toast.error(e);
         }
@@ -81,8 +87,17 @@ export default function RegistrarUser(){
                         <div class="reg-campos">
                             <div class="reg-campotitulo">CPF:</div>
                             <div class="reg-campos-input">
-                            <input type="number" min="0" required value={cpf}
+                            <input type="text" required value={cpf}
                             onChange={e => setCpf(e.target.value)}
+                             />
+                             <span></span>
+                            </div>
+                        </div>
+                        <div class="reg-campos">
+                            <div class="reg-campotitulo">ENDEREÇO:</div>
+                            <div class="reg-campos-input">
+                            <input type="text" required value={endereco}
+                            onChange={e => setEndereco(e.target.value)}
                              />
                              <span></span>
                             </div>
@@ -91,7 +106,7 @@ export default function RegistrarUser(){
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Telefone: </div>
                             <div class="reg-campos-input">
-                            <input type="number" min="0" value={tel}
+                            <input type="text" required value={tel}
                             onChange={e => setTel(e.target.value)}
                              />
                              <span></span>
