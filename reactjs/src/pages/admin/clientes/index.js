@@ -8,9 +8,11 @@ const api = new Api();
 export default function ClientesAdmin () {
     const [cliente, setCliente] = useState([]);
 
+
+    // Busca todos os clientes cadastrados no banco de dados e os retorna na tabela em forma de colunas
     const listar = async() => {
-        const produtosr = await api.listarClientesAdm();
-        setCliente(produtosr);
+        const client = await api.listarClientesAdm();
+        setCliente(client);
     }
 
       useEffect(() => {
