@@ -276,6 +276,8 @@ app.post('/produto', async (req, resp) => {
     }
 })
 
+
+{/*Altera as informações do produto com base em seu id cadastrado no banco de dados*/}
 app.put('/produto/:id', async (req, resp) => {
     try {
         let {nome, categoria, precode, precopor, avaliacao, descricao, estoque, imgproduto, ativo, inclusao} = req.body;
