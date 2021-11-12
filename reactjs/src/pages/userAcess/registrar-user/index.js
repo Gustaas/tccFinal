@@ -26,20 +26,24 @@ export default function RegistrarUser(){
         try {
         loading.current.continuousStart();
         const r = await axios.post(`http://localhost:3030/cliente` , 
+        
         { email : email, 
           senha: senha,
           nome: nome,
           cpf: cpf,
           telefone : tel
+          
         });
 
         
-            navigation.push('/')
+            navigation.push('/login')
             loading.current.complete()
 
         } catch (e) {
             toast.error(e);
         }
+
+        
     }
 
     
@@ -63,7 +67,7 @@ export default function RegistrarUser(){
                         <div class="reg-campos">
                             <div class="reg-campotitulo">E-mail:</div>
                             <div class="reg-campos-input">
-                            <input type="email" required value={email}
+                            <input type="email" minlength="10" required value={email}
                             onChange={e => setEmail(e.target.value)}
                              />
                              <span></span>

@@ -97,7 +97,8 @@ app.post('/login', async(req, resp) => {
     })
     if (!user) {
         resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
-    } else 
+    } 
+    else 
         resp.send({status: 'ok', nome: user.nm_cliente
     });
         
@@ -295,14 +296,19 @@ app.get('/cliente', async (req, resp) => {
     } catch (e) {
         resp.send('Ocorreu um erro');
     }
+    if (email === '' ) {
+        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
+    }
 })
 
-<<<<<<< HEAD
 
-=======
-/*app.post('/novo-cliente', async (req, resp) => {
+
+
+
+app.post('/cliente', async (req, resp) => {
     try {
         let {email, senha, nome, cpf, telefone} = req.body
+        
 
         let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
         if (u != null)
@@ -319,27 +325,8 @@ app.get('/cliente', async (req, resp) => {
     } catch (e) {
         resp.send(e);
     }
-})*/
->>>>>>> fd64a8acfa5ea56fdc237232c2cc7e7324535253
-
-app.post('/cliente', async (req, resp) => {
-    try {
-        let {email, senha, nome, cpf, telefone} = req.body
-
-        let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
-        if (u != null)
-            return resp.send({erro: 'Usuário já existe'}) 
-        let r = await db.infoa_dtn_tb_cliente.create({
-            ds_email: email,
-            ds_senha: senha,
-            nm_cliente: nome,
-            ds_cpf: cpf,
-            ds_telefone: telefone,
-            ds_codigo_rec: null
-        })
-        resp.send(r);
-    } catch (e) {
-        resp.send(e);
+    if (email === '' ) {
+        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
     }
 })
 

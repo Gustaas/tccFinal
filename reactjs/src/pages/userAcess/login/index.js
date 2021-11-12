@@ -29,7 +29,9 @@ export default function Login() {
         const r = await api.login(email, senha);
         console.log(r)
         const r2 = await api.getId(email);
-        if (r.status === 'ok') {
+        if (r.status === 'ok') 
+        if (email != undefined)
+        {
             Cookies.set('usuario-Logado', r2.id_cliente)
             navigation.push('/')
 
