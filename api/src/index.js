@@ -101,7 +101,8 @@ app.put('/resetSenha', async (req, resp) => {
     
 })
     
-
+{/*a API confere se as credenciais são iguais as contidas no banco de dados são iguais as inseridas,
+permitindo assim o login do usuário. Caso contrário, é enviada a mensagem: "Credenciais Inválidas". */}
 app.post('/login', async(req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
