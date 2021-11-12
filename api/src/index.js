@@ -54,6 +54,7 @@ app.post('/esqueciASenha', async(req, resp) => {
 })
 
 
+{/*Gera um código de redefinação*/}
 function getRandomIntereger(min, max){
     return Math.floor(Math.random() * (max - min) + min );
 }
@@ -79,6 +80,10 @@ app.post('/validarCodigo', async (req, resp) => {
 
 
 
+{/*O usuário altera sua senha, caso o email seja diferente do selecionado para ele alterar a senha,
+a API envia a mensagem: "Email Inválido".
+Caso contrário, a senha é alterada no banco de dados e é retornada a mensagem "A senha foi alterada"
+*/}
 app.put('/resetSenha', async (req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
