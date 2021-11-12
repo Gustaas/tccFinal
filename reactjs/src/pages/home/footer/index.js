@@ -52,12 +52,12 @@ export default function Rodapé () {
 
                     <div className="icones">
                         <div className="fb">
-                            <img src="./assets/images/Facebook-transparente.svg" alt=""/>
+                        <a href="https://www.facebook.com/Destiny_ofcsp-103968372104539/"><img src="./assets/images/Facebook-transparente.svg" alt=""/></a>
                         </div>
                     
                     
                     <div className="insta">
-                        <img src="./assets/images/Instagram-transparente.svg" alt=""/>
+                    <a href="https://www.instagram.com/destiny_sportssp/?utm_medium=copy_link"><img src="./assets/images/Instagram-transparente.svg" alt=""/></a>
                     </div>
 
 

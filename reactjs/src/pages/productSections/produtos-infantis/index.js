@@ -37,27 +37,6 @@ export default function Infantil() {
       <LoadingBar color="#fffb2a" ref={loading} />
       <div class="titulo-pagina">PRODUTOS INFANTIS</div>
 
-      <div class="classificar-container">
-        <div class="classificar">
-          <select id="classificar">
-            <option value="class1">Classificar por</option>
-            <option value="class1">Mais relevantes</option>
-            <option value="class2">Menor preço</option>
-            <option value="class3">Maior preço</option>
-          </select>
-        </div>
-
-        <div class="classificar2">
-          <select id="classificar">
-            <option value="class1">Gênero</option>
-            <option value="class1">Feminino</option>
-            <option value="class2">Masculino</option>
-            <option value="class3">Lançamento</option>
-            <option value="class4">Infantil</option>
-          </select>
-        </div>
-      </div>
-
       <div class="container-produto">
         {produto.map((item) =>
             <Produto info={item}/>

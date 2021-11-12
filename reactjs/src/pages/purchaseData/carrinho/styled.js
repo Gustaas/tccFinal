@@ -149,5 +149,6 @@ height: 100vh;
 
 .conteudo2 {
     margin-top: 5em;
+    margin-left: 21.5em;
 }
 `

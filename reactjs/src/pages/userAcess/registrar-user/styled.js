@@ -98,18 +98,20 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-decoration: underline;
     
     padding: 1em;
   }
 
+  .reg-conta a{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  
   .reg-conta:hover {
     cursor: pointer;
     text-decoration: underline;
   }
 
-  .reg-conta a{
-    color: black;
-  }
 `
 export {Container}

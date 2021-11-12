@@ -62,9 +62,13 @@ h1 {
     margin: 0em 1em;
 }
 
-.about-us {
-    outline: none;
+.about-us a{
+    cursor: pointer;
     text-decoration: none;
+}
+
+.about-us:hover {
+    text-decoration: underline;
 }
 
 `

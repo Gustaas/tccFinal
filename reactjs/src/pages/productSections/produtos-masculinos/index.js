@@ -40,17 +40,6 @@ export default function Masculinos() {
       
       <div class="titulo-pagina">PRODUTOS MASCULINOS</div>
 
-      <div class="classificar-container">
-        <div class="classificar">
-          <select id="classificar">
-            <option value="class1">Classificar por</option>
-            <option value="class1">Mais relevantes</option>
-            <option value="class2">Menor preço</option>
-            <option value="class3">Maior preço</option>
-          </select>
-        </div>
-      </div>
-
       <div class="container-produto">
         {produto.map((item) =>
             <Produto info={item}/>
