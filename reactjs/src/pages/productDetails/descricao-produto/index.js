@@ -60,15 +60,6 @@ export default function Desc(props) {
                         </div>
                     </div>
             </div>
-            <div className="descricao-produto">
-                <div className="img-desc">
-                    {produto.nm_produto}
-                    <img src="https://images.lojanike.com.br/1024x1024/produto/blusao-nike-sb-masculino-CW4383-010-1.jpg" alt="" />
-                </div>
-                <div className="desc">
-                    {produto.ds_descricao}
-                </div>
-            </div>
     </Container>
     )
 
