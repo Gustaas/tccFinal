@@ -22,6 +22,20 @@ const Container = styled.div`
     padding: 2em 3em;
   }
 
+  .adm {
+    padding: 2em;
+  }
+
+  .adm a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .adm a:hover{
+    text-decoration: underline;
+  }
+
+
   .reg-titulo {
     text-align: center;
 
@@ -71,12 +85,6 @@ const Container = styled.div`
   text-decoration: underline;
 }
 
-.reg-conta:{
-  margin-top: 4px;
-  font: italic;
-  font-size: 1em;
-  background-color: white;
-}
 
 .reg-conta:hover {
   cursor: pointer;
@@ -94,6 +102,10 @@ const Container = styled.div`
 
 .reg-conta a{
   text-decoration: none;
+}
+
+.reg-a button:hover{
+  opacity: 50%;
 }
 `
 export {Container}

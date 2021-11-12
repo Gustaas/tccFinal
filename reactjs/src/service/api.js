@@ -18,7 +18,6 @@ export default class Api {
     async getId(email) {
         let r = await api.get(`/login-id/${email}`);
         return r.data;
-
     }
 
     async listarAdm() {
@@ -28,6 +27,12 @@ export default class Api {
 
     async listarClientesAdm () {
         let r = await api.get('/cliente-adm');
+        return r.data;
+    }
+
+    async login(email, senha) {
+        let r = await api.post('/login', {email, senha})
+        console.log(r);
         return r.data;
     }
 
@@ -51,11 +56,4 @@ export default class Api {
         let r = await api.delete(`/produto/${id}`);
         return r.data; 
     }
-    
-    async login(usuario, senha){
-        let r = await api.post('/login', { usuario, senha })
-        return r.data
-    }
-
-
 }

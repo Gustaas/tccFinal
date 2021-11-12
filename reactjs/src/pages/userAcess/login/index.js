@@ -21,22 +21,20 @@ export default function Login() {
     const [ email, setEmail] = useState('');
     const [ senha, setSenha] = useState('');
 
-    let usuarioLogado = Cookies.get('usuario-logado');
-
     const loading = useRef(null); 
     const navigation = useHistory(); 
 
     async function logar() {
         loading.current.continuousStart();
-        const r = await axios.post(`http://localhost:3030/login` , { email : email, senha: senha});
+        const r = await api.login(email, senha);
+        console.log(r)
         const r2 = await api.getId(email);
-        console.log(r2);
-        if (r.data.status === 'ok') {
+        if (r.status === 'ok') {
             Cookies.set('usuario-Logado', r2.id_cliente)
             navigation.push('/')
 
         } else {
-            toast.error(r.data.mensagem);
+            toast.error(r);
             loading.current.complete();
         }
     }
@@ -46,6 +44,7 @@ export default function Login() {
             
             <ToastContainer/>
             <LoadingBar color="red" ref={loading} />
+
 
             
             <div class="conteudo-reg">
@@ -86,6 +85,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
+                <div className="adm"><Link to='/admin/login'> Login Adm </Link></div>
             </div>
         </Container>
     )
