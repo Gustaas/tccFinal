@@ -253,6 +253,8 @@ app.get('/produto-time/:time', async (req, resp) => {
     }
 })
 
+
+{/*Insere os produtos dentro do banco de dados*/}
 app.post('/produto', async (req, resp) => {
     try {
         let {nome, genero, descricao, categoria, preco, img, time} = req.body;
