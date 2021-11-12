@@ -28,7 +28,7 @@ const Container = styled.div`
 
   .adm a{
     text-decoration: none;
-    color: black;
+    color: white;
   }
 
   .adm a:hover{
