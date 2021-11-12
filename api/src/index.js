@@ -306,6 +306,8 @@ app.put('/produto/:id', async (req, resp) => {
     }
 })
 
+
+{/*Deleta o produto com base em seu id cadastrado no banco de dados*/}
 app.delete('/produto/:id', async (req, resp) => {
     try {
         let {id} = req.params;
