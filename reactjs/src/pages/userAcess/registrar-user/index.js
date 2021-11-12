@@ -46,6 +46,8 @@ export default function RegistrarUser(){
         } catch (e) {
             toast.error(e);
         }
+
+        
     }
 
     
@@ -69,7 +71,7 @@ export default function RegistrarUser(){
                         <div class="reg-campos">
                             <div class="reg-campotitulo">E-mail:</div>
                             <div class="reg-campos-input">
-                            <input type="email" required value={email}
+                            <input type="email" minlength="10" required value={email}
                             onChange={e => setEmail(e.target.value)}
                              />
                              <span></span>

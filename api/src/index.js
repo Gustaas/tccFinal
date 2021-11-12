@@ -97,7 +97,8 @@ app.post('/login', async(req, resp) => {
     })
     if (!user) {
         resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
-    } else 
+    } 
+    else 
         resp.send({status: 'ok', nome: user.nm_cliente
     });
         
@@ -295,12 +296,16 @@ app.get('/cliente', async (req, resp) => {
     } catch (e) {
         resp.send('Ocorreu um erro');
     }
+    if (email === '' ) {
+        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
+    }
 })
 
 
 app.post('/cliente', async (req, resp) => {
     try {
         let {email, senha, nome, cpf, telefone} = req.body
+        
 
         let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
         let u2 = await db.infoa_dtn_tb_cliente.findOne({where: {ds_email: email} })
@@ -318,6 +323,9 @@ app.post('/cliente', async (req, resp) => {
         resp.send(r);
     } catch (e) {
         resp.send(e);
+    }
+    if (email === '' ) {
+        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
     }
 })
 
