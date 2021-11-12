@@ -134,6 +134,11 @@ const Container = styled.div`
     padding: 1em;
   }
 
+  .reg-conta a{
+    color: black;
+    text-decoration: none;
+  }
+
   .reg-conta:hover {
     cursor: pointer;
     text-decoration: underline;
