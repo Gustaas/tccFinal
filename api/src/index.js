@@ -10,6 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+
+{/*a API busca o email do usuário no banco de Dados, caso não encontre, retorna uma mensagem de erro*/}
 app.get('/login-id/:email', async (req, resp) => {
     try {    
     let email = req.params.email;
@@ -22,6 +25,9 @@ app.get('/login-id/:email', async (req, resp) => {
 })
 
 
+{/*a API busca o email do usuário no banco para redefinição da senha, caso encontre,
+    é enviado um email de recuperação com um código de redefinição da senha.
+    Se não, retorna um erro informando que o e-mail é inválido*/}
 app.post('/esqueciASenha', async(req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
