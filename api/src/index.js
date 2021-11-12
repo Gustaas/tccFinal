@@ -59,6 +59,9 @@ function getRandomIntereger(min, max){
 }
 
 
+{/*O usuário insere o código recebido por email para alterar sua senha, caso o código seja diferente do recebido,
+é retornado uma mensagem dizendo que o código é inválido.
+Se as informações inseridas baterem com as enviadas pela API, é retornado que o código foi validado*/}
 app.post('/validarCodigo', async (req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
