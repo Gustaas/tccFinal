@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Container } from "./styled";
 import { Button } from "../../../components/button/styled";
-import { Input } from "../../../components/input/styled";
+
 import { useState, useRef } from "react";
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -32,6 +32,8 @@ export default function RegistrarUser(){
           cpf: cpf,
           telefone : tel
         });
+
+        
             navigation.push('/')
             loading.current.complete()
 
@@ -52,51 +54,56 @@ export default function RegistrarUser(){
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Nome Completo:</div>
                             <div class="reg-campos-input">
-                            <Input value={nome}
+                            <input type="text" required minlength="4" maxLength="35" value={nome}
                             onChange={e => setNome(e.target.value)}
                              />
+                             <span></span>
                             </div>
                         </div>
                         <div class="reg-campos">
                             <div class="reg-campotitulo">E-mail:</div>
                             <div class="reg-campos-input">
-                            <Input value={email}
+                            <input type="email" required value={email}
                             onChange={e => setEmail(e.target.value)}
                              />
+                             <span></span>
                         </div>
                         </div>
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Escolha uma Senha:</div>
                             <div class="reg-campos-input">
-                            <Input value={senha}
+                            <input type="password" required value={senha}
                             onChange={e => setSenha(e.target.value)}
                              />
+                             <span></span>
                             </div>
                         </div>
                         <div class="reg-campos">
                             <div class="reg-campotitulo">CPF:</div>
                             <div class="reg-campos-input">
-                            <Input value={cpf}
+                            <input type="number" min="0" required value={cpf}
                             onChange={e => setCpf(e.target.value)}
                              />
+                             <span></span>
                             </div>
                         </div>
 
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Telefone: </div>
                             <div class="reg-campos-input">
-                            <Input value={tel}
+                            <input type="number" min="0" value={tel}
                             onChange={e => setTel(e.target.value)}
                              />
+                             <span></span>
                             </div>
                         </div>
 
                         
 
                         <div class="reg-a"> 
-                            <a onClick={registrar}> 
+                            <Button onClick={registrar}> 
                                 Criar conta
-                            </a>
+                            </Button>
                         </div>
 
                         <div class="reg-conta">

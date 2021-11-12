@@ -273,7 +273,7 @@ app.put('/produto/:id', async (req, resp) => {
                 ds_categoria: categoria,
                 vl_preco_de: precode,
                 vl_preco_por: precopor,
-                vl_avaliacao: avaliacao,
+                vl_avaliacao: avaliacao, 
                 ds_produto: descricao,
                 qtd_estoque: estoque,
                 img_produto: imgproduto,
@@ -303,7 +303,7 @@ app.delete('/produto/:id', async (req, resp) => {
     }
 })
 
-app.get('/novo-cliente', async (req, resp) => {
+app.get('/cliente', async (req, resp) => {
     try{
         let clientes = await db.infoa_dtn_tb_cliente.findAll({order: [['id_cliente', 'desc']]})
         resp.send(clientes);
@@ -312,26 +312,7 @@ app.get('/novo-cliente', async (req, resp) => {
     }
 })
 
-app.post('/novo-cliente', async (req, resp) => {
-    try {
-        let {email, senha, nome, cpf, telefone} = req.body
 
-        let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
-        if (u != null)
-            return resp.send({erro: 'Usuário já existe'}) 
-        let r = await db.infoa_dtn_tb_cliente.create({
-            ds_email: email,
-            ds_senha: senha,
-            nm_cliente: nome,
-            ds_cpf: cpf,
-            ds_telefone: telefone,
-            ds_codigo_rec: null
-        })
-        resp.send(r);
-    } catch (e) {
-        resp.send(e);
-    }
-})
 
 app.post('/cliente', async (req, resp) => {
     try {

@@ -1,28 +1,59 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-
-input {
+  input {
     border: solid 1px black;
     width: 100%;
-    padding: .7em 1em;
+    padding: 0.7em 1em;
 
-    font: 400 .8em "Oswald";
-    outline: none
+    font: 400 0.8em "Oswald";
+    outline: none;
+  }
+
+  span {
+    position: relative;
+  }
+
+  input:focus {
+    border: solid 1px blue !important ;
+  }
+
+  input:invalid {
+    border-color: #ff4e66;
+  }
+
+  input:valid {
+    border-color: green;
+  }
+
+  input:invalid + span::before {
+    content: "✖";
+    color: red;
+  }
+
+  input:valid + span::before {
+    color: green;
+    content: "✓";
+  }
+
+  input + span::before {
+    position: absolute;
+    left: 23em;
+    top: -2em;
   }
 
   .menu-botao button {
     color: #23272a;
     background-color: white;
-  
+
     border: none;
     border-radius: 30px;
-  
+
     padding: 10px 15px;
-  
+
     outline: none;
   }
-  
+
   .menu-botao button {
     transition: 0.4s;
     cursor: pointer;
@@ -40,7 +71,7 @@ input {
     align-items: center;
     justify-content: center;
 
-    height: 80vh;
+    height: 90vh;
     font: 1.2em "Bebas Neue";
   }
 
@@ -49,7 +80,8 @@ input {
     box-shadow: 0px 2px 3px 0px #888;
     height: 33em;
     width: 23em;
-    padding: 2em 3.2em;
+    padding: 7em 9.2em;
+    margin-top: 130px;
   }
 
   .reg-titulo {
@@ -60,7 +92,7 @@ input {
   }
 
   .reg-campos {
-    padding: .3em 0em;
+    padding: 0.3em 0em;
   }
 
   .reg-a {
@@ -71,47 +103,42 @@ input {
     padding: 1em;
   }
 
-  .reg-a:hover{
+  .reg-a:hover {
     cursor: pointer;
     text-decoration: underline;
   }
 
   .reg-a a {
-      text-align: center;
-      align-items: center;
+    text-align: center;
+    align-items: center;
 
-      padding: .3em 5em;
+    padding: 0.3em 5em;
 
-      font: 1em "Bebas Neue";
-      background-color: #5EC5FF;
+    font: 1em "Bebas Neue";
+    background-color: #5ec5ff;
 
-      border: none;
-      border-radius: 4px;
+    border: none;
+    border-radius: 4px;
   }
 
-  .reg-a a:hover{
+  .reg-a a:hover {
     opacity: 0.6;
     transition: 0.4s;
   }
-  
+
   .reg-conta {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
     padding: 1em;
   }
 
-  .reg-conta a{
-    cursor: pointer;
-    text-decoration: none;
-    color: black;
-  }
-  
   .reg-conta:hover {
     cursor: pointer;
     text-decoration: underline;
   }
 
-`
-export {Container}
+  
+`;
+export { Container };
