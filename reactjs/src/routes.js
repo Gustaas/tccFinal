@@ -109,10 +109,21 @@ export default function Final() {
 
 
             {/*PARTE ADMINISTRATIVA*/}
+
+
+            {/* Permite o usuário administrativo fazer login */}
             <Route path='/admin/login' component={LoginAdmin}/>
+
+            {/* Abre a tela administrativa de cadastrar produtos*/}
             <Route path='/admin/cadastrar' component={CadastrarProduto}/>
+
+            {/* Abre a tela administrativa de clientes*/}
             <Route path='/admin/cliente'component={ClientesAdm}/>
+
+            {/* Abre a tela administrativa de pedidos */}
             <Route path='/admin/pedidos' component={PedidosAdmin}/>
+
+            {/* Abre a tela administrativa de produtos */}
             <Route path='/admin/produtos' component={Produtos}/>
         </Switch>
     </BrowserRouter>
