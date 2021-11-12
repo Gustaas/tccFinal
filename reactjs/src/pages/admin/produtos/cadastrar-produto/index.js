@@ -19,6 +19,12 @@ export default function CadastrarProduto () {
     const [ img, setImg] = useState ('');
     const [ desc, setDesc ] = useState ('')
 
+
+
+    /* Insere os produtos no banco de dados, armazenando: Nome, Preço, Categoria, Gênero, Imagem, Descrição e Time.
+        É válido ressaltar que a função exige que todos os campos estejam completos, se não, retornará que existe um e/ou os campos estão inválidos
+    */
+
     async function inserir() {
         if (nome !=='' && preco > 0 && categoria !=='' && genero !== '' && img !=='' && desc !=='' && time !='' )
             {
