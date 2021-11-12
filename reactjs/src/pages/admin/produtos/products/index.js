@@ -9,6 +9,8 @@ export default function Produtos () {
     
     const [produto, setProduto] = useState([]);
 
+    /*Lista todos os produtos cadastrados no banco de dados e os retorna na tela administrativa de produtos
+      listando-os em tabelas e separando-os em colunas*/
     const listar = async() => {
         const produtosr = await api.listarAdm();
         console.log(produtosr);
