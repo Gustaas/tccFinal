@@ -102,11 +102,16 @@ input {
     padding: 1em;
   }
 
+  .reg-conta a{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  
   .reg-conta:hover {
     cursor: pointer;
     text-decoration: underline;
   }
-
 
 `
 export {Container}
