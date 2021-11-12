@@ -71,7 +71,7 @@ export default function RegistrarUser(){
                         </div>
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Escolha uma Senha:</div>
-                            <div class="reg-campos-input">
+                            <div class="reg-campos-input"> <div/>
                             <input type="password" required value={senha}
                             onChange={e => setSenha(e.target.value)}
                              />
