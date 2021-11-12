@@ -321,6 +321,9 @@ app.delete('/produto/:id', async (req, resp) => {
     }
 })
 
+
+{/*a API confere se as credenciais são iguais as contidas no banco de dados são iguais as inseridas,
+permitindo assim o login do usuário. Caso contrário, é enviada a mensagem: "Credenciais Inválidas". */}
 app.get('/cliente', async (req, resp) => {
     try{
         let {email, senha} = req.body;
@@ -335,7 +338,7 @@ app.get('/cliente', async (req, resp) => {
 })
 
 {/* a API verifica os dados do usuário dentro do banco de dados, para que caso haja dualidade de dados,
-    ela retorna que o usuário já existe. Caso contrário, ela insere as informações, permitindo futuros login's do mesmo usuário
+    ela retorna que o usuário já existe. Caso contrário, ela insere as informações, permitindo futuros login's dos usuários
 */}
 app.post('/cliente', async (req, resp) => {
     try {
