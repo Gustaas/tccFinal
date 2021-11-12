@@ -10,6 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+
+{/*a API busca o email do usuário no banco de Dados, caso não encontre, retorna uma mensagem de erro*/}
 app.get('/login-id/:email', async (req, resp) => {
     try {    
     let email = req.params.email;
@@ -22,6 +25,9 @@ app.get('/login-id/:email', async (req, resp) => {
 })
 
 
+{/*a API busca o email do usuário no banco para redefinição da senha, caso encontre,
+    é enviado um email de recuperação com um código de redefinição da senha.
+    Se não, retorna um erro informando que o e-mail é inválido*/}
 app.post('/esqueciASenha', async(req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
@@ -48,11 +54,15 @@ app.post('/esqueciASenha', async(req, resp) => {
 })
 
 
+{/*Gera um código de redefinação*/}
 function getRandomIntereger(min, max){
     return Math.floor(Math.random() * (max - min) + min );
 }
 
 
+{/*O usuário insere o código recebido por email para alterar sua senha, caso o código seja diferente do recebido,
+é retornado uma mensagem dizendo que o código é inválido.
+Se as informações inseridas baterem com as enviadas pela API, é retornado que o código foi validado*/}
 app.post('/validarCodigo', async (req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
@@ -70,6 +80,10 @@ app.post('/validarCodigo', async (req, resp) => {
 
 
 
+{/*O usuário altera sua senha, caso o email seja diferente do selecionado para ele alterar a senha,
+a API envia a mensagem: "Email Inválido".
+Caso contrário, a senha é alterada no banco de dados e é retornada a mensagem "A senha foi alterada"
+*/}
 app.put('/resetSenha', async (req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
@@ -87,7 +101,8 @@ app.put('/resetSenha', async (req, resp) => {
     
 })
     
-
+{/*a API confere se as credenciais são iguais as contidas no banco de dados são iguais as inseridas,
+permitindo assim o login do usuário. Caso contrário, é enviada a mensagem: "Credenciais Inválidas". */}
 app.post('/login', async(req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
@@ -104,6 +119,8 @@ app.post('/login', async(req, resp) => {
         
 })
 
+
+{/*a API busca os dados do usuário e os demonstra na tela administrativa de clientes*/}
 app.get('/cliente-adm', async (req, resp) => {
     try {
         let r = await db.infoa_dtn_tb_cliente.findAll();
@@ -113,7 +130,7 @@ app.get('/cliente-adm', async (req, resp) => {
     }
 })
 
-
+{/*a API busca os dados dos produtos cadastrados e os demonstra na tela administrativa de produtos*/}
 app.get('/produto-adm', async (req, resp) => {
     try {
         const r = await db.infoa_dtn_tb_produto.findAll({order: [[ 'id_produto', 'desc' ]]});
@@ -123,6 +140,9 @@ app.get('/produto-adm', async (req, resp) => {
     }
 })
 
+
+{/*a API puxa todos os produtos cadastrados no banco de dados e os envia para a tela de todos os produtos,
+retornando 15 produtos por página e permitindo navegar por paginação*/}
 app.get('/produto-todos', async (req, resp) => {
     try {
 
@@ -156,6 +176,9 @@ app.get('/produto-todos', async (req, resp) => {
     }
 })
 
+{/*a API puxa todos os produtos cadastrados no banco de dados filtrados pela categoria de gênero
+e os envia para a tela de todos os produtos quando o usuário seleciona a filtração pela opção de gênero,
+retornando 15 produtos por página e permitindo navegar por paginação*/}
 app.get('/produto/:genero', async (req, resp) => {
     try {
 
@@ -191,6 +214,10 @@ app.get('/produto/:genero', async (req, resp) => {
     }
 })
 
+
+{/*a API puxa todos os produtos cadastrados no banco de dados filtrados pela categoria de time
+e os envia para a tela de todos os produtos quando o usuário seleciona a opção de time na página inicial,
+retornando 15 produtos por página e permitindo navegar por paginação*/}
 app.get('/produto-time/:time', async (req, resp) => {
     try {
 
@@ -226,6 +253,8 @@ app.get('/produto-time/:time', async (req, resp) => {
     }
 })
 
+
+{/*Insere os produtos dentro do banco de dados*/}
 app.post('/produto', async (req, resp) => {
     try {
         let {nome, genero, descricao, categoria, preco, img, time} = req.body;
@@ -247,6 +276,8 @@ app.post('/produto', async (req, resp) => {
     }
 })
 
+
+{/*Altera as informações do produto com base em seu id cadastrado no banco de dados*/}
 app.put('/produto/:id', async (req, resp) => {
     try {
         let {nome, categoria, precode, precopor, avaliacao, descricao, estoque, imgproduto, ativo, inclusao} = req.body;
@@ -275,6 +306,8 @@ app.put('/produto/:id', async (req, resp) => {
     }
 })
 
+
+{/*Deleta o produto com base em seu id cadastrado no banco de dados*/}
 app.delete('/produto/:id', async (req, resp) => {
     try {
         let {id} = req.params;
@@ -288,6 +321,9 @@ app.delete('/produto/:id', async (req, resp) => {
     }
 })
 
+
+{/*a API confere se as credenciais são iguais as contidas no banco de dados são iguais as inseridas,
+permitindo assim o login do usuário. Caso contrário, é enviada a mensagem: "Credenciais Inválidas". */}
 app.get('/cliente', async (req, resp) => {
     try{
         let {email, senha} = req.body;
@@ -301,7 +337,9 @@ app.get('/cliente', async (req, resp) => {
     }
 })
 
-
+{/* a API verifica os dados do usuário dentro do banco de dados, para que caso haja dualidade de dados,
+    ela retorna que o usuário já existe. Caso contrário, ela insere as informações, permitindo futuros login's dos usuários
+*/}
 app.post('/cliente', async (req, resp) => {
     try {
         let {email, senha, nome, cpf, telefone} = req.body
