@@ -4,7 +4,6 @@ import Home from './pages/home/index'
 import Login from './pages/userAcess/login'
 import SobreNos from './pages/home/sobre nos'
 import AddEndereco from './pages/purchaseData/endereço/adicionar-endereco';
-import Parcelamento from './pages/purchaseData/parcelamento';
 import Pagamento from './pages/purchaseData/pagamentos';
 import Desc from './pages/productDetails/descricao-produto';
 import Feminino from './pages/productSections/produtos-femininos';
@@ -38,7 +37,6 @@ export default function Final() {
             <Route path='/login' component={Login} />
             <Route path='/sobre-nos' component={SobreNos} />
             <Route path='/endereço/add' component={AddEndereco} />
-            <Route path='/parcelamento' component={Parcelamento} />
             <Route path='/pagamento' component={Pagamento} />
             <Route path='/produto/descricao' component={Desc} />
             <Route path='/produtos/femininos' component={Feminino}/>

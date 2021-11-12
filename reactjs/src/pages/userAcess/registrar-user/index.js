@@ -24,7 +24,7 @@ export default function RegistrarUser(){
 
     async function registrar() {
         loading.current.continuousStart();
-        const r = await axios.post(`http://localhost:3030/novo-cliente` , 
+        const r = await axios.post(`http://localhost:3030/cliente` , 
         { email : email, 
           senha: senha,
           nome: nome,
@@ -38,16 +38,14 @@ export default function RegistrarUser(){
             navigation.push('/')
 
         } else {
-
-            navigation.push('/erro-reg')
-
+            toast.error(r.data.mensagem);
+            loading.current.complete();
         }
     }
 
     
     return(
         <Container>
-            
                 <ToastContainer/>
                     <LoadingBar color="red" ref={loading} />
         
@@ -98,12 +96,10 @@ export default function RegistrarUser(){
 
                         
 
-                        <div class="reg-a"> <a onClick={registrar}>
-                        
-
-                        </a>
-
+                        <div class="reg-a">
+                            <a onClick={registrar}>Registrar</a>
                         </div>
+
                         <div class="reg-conta">
                             <div class="a"> 
                                 <Link to='/login'>Já possuo uma conta </Link>

@@ -1,5 +1,5 @@
 import db from './db.js'
-import express from 'express'
+import express, { response } from 'express'
 import cors from 'cors'
 import Sequelize from 'sequelize';
 import enviarEmail from "./email.js";
@@ -9,6 +9,17 @@ const { op, col, fn } = Sequelize;
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get('/login-id/:email', async (req, resp) => {
+    try {    
+    let email = req.params.email;
+
+    const r = await db.infoa_dtn_tb_cliente.findOne({ where: {ds_email: email}})
+    resp.send(r);
+    } catch (e) {
+        resp.send(e);
+    }
+})
 
 
 app.post('/esqueciASenha', async(req, resp) => {
@@ -302,6 +313,27 @@ app.get('/novo-cliente', async (req, resp) => {
 })
 
 app.post('/novo-cliente', async (req, resp) => {
+    try {
+        let {email, senha, nome, cpf, telefone} = req.body
+
+        let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
+        if (u != null)
+            return resp.send({erro: 'Usuário já existe'}) 
+        let r = await db.infoa_dtn_tb_cliente.create({
+            ds_email: email,
+            ds_senha: senha,
+            nm_cliente: nome,
+            ds_cpf: cpf,
+            ds_telefone: telefone,
+            ds_codigo_rec: null
+        })
+        resp.send(r);
+    } catch (e) {
+        resp.send(e);
+    }
+})
+
+app.post('/cliente', async (req, resp) => {
     try {
         let {email, senha, nome, cpf, telefone} = req.body
 

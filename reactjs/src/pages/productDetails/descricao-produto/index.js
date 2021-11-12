@@ -13,7 +13,7 @@ export default function Desc(props) {
 
     function getTamanhoStyle(t) {
         if (tamanho === t)
-            return { backgroundColor: '#000', color: '#fff'}
+            return { backgroundColor: '#000', opacity: '50%', color: '#fff'}
         else 
             return {}
     }

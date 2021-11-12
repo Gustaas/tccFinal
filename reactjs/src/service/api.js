@@ -15,6 +15,12 @@ export default class Api {
         return r.data;
     }
 
+    async getId(email) {
+        let r = await api.get(`/login-id/${email}`);
+        return r.data;
+
+    }
+
     async listarAdm() {
         let r = await api.get('/produto-adm');
         return r.data;
@@ -28,7 +34,6 @@ export default class Api {
     async listarTime(pagina, time){
 
         let r = await api.get(`/produto-time/${time}?page=${pagina}`);
-        console.log(r)
         return r.data;
     }
 

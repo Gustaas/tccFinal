@@ -1,7 +1,26 @@
 import { CabecalhoDiv } from "./styled";
 import { Link } from 'react-router-dom'
+import Cookies from "js-cookie";
 
 export default function Cabecalho() {
+
+    let r = Cookies.get('usuario-Logado')
+    console.log(r);
+
+    function user(r) {
+        
+        if( r === undefined)
+        {
+            return(
+                '/login'
+            )
+        } else {
+            return(
+                '/pedidos'
+            )
+        }
+    }
+    
     return (
         <CabecalhoDiv>
           
@@ -20,7 +39,7 @@ export default function Cabecalho() {
             <div class="menu-botao">
                 <Link to='/carrinho'><button><img src="/assets/images/carrinhoo.svg" alt="" width='20px' /></button></Link>
                 <div  className="botao-login">
-                    <Link to='/login'>  <button><img class="img" src="/assets/images/login.jpg" alt="" width='23px'/> </button>         </Link>
+                    <Link to={user(r)}>  <button><img class="img" src="/assets/images/login.jpg" alt="" width='23px'/> </button>         </Link>
                 </div>
             </div>
         </CabecalhoDiv>
