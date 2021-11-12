@@ -23,23 +23,20 @@ export default function RegistrarUser(){
 
 
     async function registrar() {
+        try {
         loading.current.continuousStart();
         const r = await axios.post(`http://localhost:3030/cliente` , 
         { email : email, 
           senha: senha,
           nome: nome,
           cpf: cpf,
-          tel : tel
-
+          telefone : tel
         });
-
-
-        if (r.data.status === 'ok') {
             navigation.push('/')
+            loading.current.complete()
 
-        } else {
-            toast.error(r.data.mensagem);
-            loading.current.complete();
+        } catch (e) {
+            toast.error(e);
         }
     }
 
