@@ -30,12 +30,14 @@ export default function RegistrarUser(){
             nome: nome,
             cpf: cpf,
             telefone : tel
+        
 
         });
         if (r.erro) {
             alert(`${r.erro}`)
         } else {
             navigation.push('/login')
+            console.log(cadastar)
         }
     }
 

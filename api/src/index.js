@@ -359,7 +359,18 @@ app.delete('/usuario/:id', async (req, resp) => {
 */}
 
 
+app.post('/login', async (req, resp) => {
+    let login = req.body;
 
+    let r = await db.infoa_dtn_tb_cliente.findOne( 
+        { where: { ds_email: login.email, 
+                   ds_senha: login.senha 
+                }
+             })
+             if ( r == null )
+             return resp.send({erro : 'Credenciais Invalki9das '});
+             resp.send(200)
+})
 
 
 

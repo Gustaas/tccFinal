@@ -9,13 +9,36 @@ import { Link } from 'react-router-dom';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar';
+import { useState } from "react";
+import { useHistory } from "react-router";
 
+import Api from "../../../service/api";
+const api = new Api();
 
 
 
 
 
 export default function Login() {
+
+
+    const [ email, setEmail] = useState('');
+    const [ senha, setSenha] = useState('');
+
+    const navigation = useHistory();
+
+    const logar = async () => {
+        console.log(email)
+        console.log(senha)
+
+        let r = await api.login(email, senha);
+        console.log(r)
+        if(r.erro) {
+            alert(`${r.erro}`)
+        } else {
+            navigation.push('/')
+        }
+    }
 
     
 
@@ -36,7 +59,7 @@ export default function Login() {
                     <div class="reg-campos">
                         <div class="reg-campotitulo">E-Mail:</div>
                         <div class="reg-campos-input">
-                            <Input 
+                            <Input value={email} onChange={ e => setEmail(e.target.value)}
                              />
                         </div>
                     </div>
@@ -44,7 +67,8 @@ export default function Login() {
                     <div class="reg-campos">
                         <div class="reg-campotitulo">Senha:</div>
                         <div class="reg-campos-input">
-                            <Input 
+                        <Input value={senha} onChange={ e => setSenha(e.target.value)}
+                             
                              type="password"/>
                         <div class="reg-camposenha"> 
                             <Link to="/esqueciASenha">
@@ -55,7 +79,7 @@ export default function Login() {
                     </div>
 
                     <div class="reg-a">
-                        <Button  Entrar />
+                        <Button  onClick={logar} > Logar </Button> 
 
                         
                     </div>
