@@ -36,14 +36,21 @@ const Container = styled.div`
         border: solid gray 1px;
         border-radius: 15px;
         margin: 1em;
-        max-width: 20em;
+        width: auto;
+        height: 90%;
+        position: relative;
     }
     
     .adc-carrinho {
         align-items: center;
         display: flex;
         flex-direction: column;
-        padding-top: 2em;
+    }
+
+    .adc-carrinho button{
+        position: absolute;
+        bottom: 0.5em;
+        left: 4em;
     }
     
     .nome-produto {
