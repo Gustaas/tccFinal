@@ -325,39 +325,28 @@ app.delete('/produto/:id', async (req, resp) => {
     }
 })
 
-{ /*PÁGINA DE REGISTRAR USUÁRIO */}
 
+{ /*PÁGINA DE REGISTRAR USUÁRIO */}
 app.post('/usuario', async (req, resp) => {
     try {
-        let usuParam = req.body;
+        let {nome, email, senha, cpf, telefone} = req.body;
+        let usuarioOK = await db.infoa_dtn_tb_cliente.findOne({ where: { ds_email: email}})
+        if(usuarioOK !== null)
+            return resp.send({ erro: ' EMAIL INVÁLIDO'})
+        let r = await db.infoa_dtn_tb_cliente.create({
+            nm_cliente: nome,
+            ds_email: email,
+            ds_senha: senha,
+            ds_cpf: cpf,
+            ds_telefone: telefone
+        })
+        resp.send(r);
 
-        let u = await db.infoa_dtn_tb_cliente.findOne({ 
-            where: { ds_email : usuParam.email }  });
-
-        let ucpf = await db.infoa_dtn_tb_cliente.findOne({ 
-                where: { ds_cpf : usuParam.cpf }  });    
-            
-            if (u != null)
-            return resp.send({  erro: 'E-mail já cadastrado' });
-
-            if (ucpf != null)
-            return resp.send({  erro: 'CPF já cadastrado' });
-
-            let r = await db.infoa_dtn_tb_cliente.create( {
-                ds_email: usuParam.email,
-                nm_cliente: usuParam.nome,
-                ds_senha: usuParam.senha,
-                ds_cpf: usuParam.cpf,
-                ds_telefone: usuParam.tel
-                
-
-            })
-            resp.send(r);
-
-    } catch (e) {
-            resp.send({ erro: 'Ocorreu um erro'})
+        } catch (e) {
+        resp.send({erro: e.toString()});
     }
 })
+
 
 { /*PÁGINA DE REGISTRAR USUÁRIO, CONSULTAR OS USUARIOS JÁ CADASTRADOS */}
 app.get('/usuario', async (req, resp) => {

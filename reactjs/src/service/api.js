@@ -64,10 +64,10 @@ export default class Api {
     }
 
     
-    async inserirUsuario(email, nome, cpf, senha, tel) {
-        let r = await api.post(`/usuario`, { email, nome, cpf, senha, tel })
+    async inserirU(nome, email, cpf, senha, tel){
+        let r = await api.post('/usuario', { nome, email, cpf, senha, tel } );
         return r.data;
-    } 
+    }
 
     async login(email, senha) {
         let r = await api.post('/login', {email, senha})
