@@ -129,14 +129,18 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     
     padding: 1em;
   }
 
   .reg-conta a{
-      text-decoration: none;
+    text-decoration: none;
   }
 
+  .reg-conta:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 `

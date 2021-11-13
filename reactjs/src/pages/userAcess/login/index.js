@@ -74,7 +74,7 @@ export default function Login() {
                     </div>
 
                     <div class="reg-a">
-                        <Button  onClick={logar} > Logar </Button> 
+                        <Button  onClick={logar} > Entrar </Button> 
 
                         
                     </div>
