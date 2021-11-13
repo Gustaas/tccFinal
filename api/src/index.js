@@ -12,17 +12,7 @@ app.use(express.json());
 
 
 
-{/*a API busca o email do usuário no banco de Dados, caso não encontre, retorna uma mensagem de erro*/}
-app.get('/login-id/:email', async (req, resp) => {
-    try {    
-    let email = req.params.email;
 
-    const r = await db.infoa_dtn_tb_cliente.findOne({ where: {ds_email: email}})
-    resp.send(r);
-    } catch (e) {
-        resp.send(e);
-    }
-})
 
 
 {/*a API busca o email do usuário no banco para redefinição da senha, caso encontre,
@@ -101,23 +91,8 @@ app.put('/resetSenha', async (req, resp) => {
     
 })
     
-{/*a API confere se as credenciais são iguais as contidas no banco de dados são iguais as inseridas,
-permitindo assim o login do usuário. Caso contrário, é enviada a mensagem: "Credenciais Inválidas". */}
-app.post('/login', async(req, resp) => {
-    const user = await db.infoa_dtn_tb_cliente.findOne({
-        where: {
-            ds_email: req.body.email,
-            ds_senha: req.body.senha
-        }
-    })
-    if (!user) {
-        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
-    } 
-    else 
-        resp.send({status: 'ok', nome: user.nm_cliente
-    });
-        
-})
+
+
 
 
 {/*a API busca os dados do usuário e os demonstra na tela administrativa de clientes*/}
@@ -321,50 +296,72 @@ app.delete('/produto/:id', async (req, resp) => {
     }
 })
 
+{ /*PÁGINA DE REGISTRAR USUÁRIO */}
 
-{/*a API confere se as credenciais são iguais as contidas no banco de dados são iguais as inseridas,
-permitindo assim o login do usuário. Caso contrário, é enviada a mensagem: "Credenciais Inválidas". */}
-app.get('/cliente', async (req, resp) => {
-    try{
-        let {email, senha} = req.body;
-        let clientes = await db.infoa_dtn_tb_cliente.findOne({where: { ds_email: email, ds_senha: senha}})
-        resp.send(clientes);
-    } catch (e) {
-        resp.send('Ocorreu um erro');
-    }
-    if (email === '' ) {
-        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
-    }
-})
-
-{/* a API verifica os dados do usuário dentro do banco de dados, para que caso haja dualidade de dados,
-    ela retorna que o usuário já existe. Caso contrário, ela insere as informações, permitindo futuros login's dos usuários
-*/}
-app.post('/cliente', async (req, resp) => {
+app.post('/usuario', async (req, resp) => {
     try {
-        let {email, senha, nome, cpf, telefone} = req.body
-        
+        let usuParam = req.body;
 
-        let u = await db.infoa_dtn_tb_cliente.findOne({where: {nm_cliente: nome} })
-        let u2 = await db.infoa_dtn_tb_cliente.findOne({where: {ds_email: email} })
+        let u = await db.infoa_dtn_tb_cliente.findOne({ 
+            where: { ds_email : usuParam.email }  });
 
-        if (u !== undefined || u2 !== undefined)
-            return resp.send({erro: 'Usuário já existe'})
-        let r = await db.infoa_dtn_tb_cliente.create({
-            ds_email: email,
-            ds_senha: senha,
-            nm_cliente: nome,
-            ds_cpf: cpf,
-            ds_telefone: telefone,
-            ds_codigo_rec: null
-        })
-        resp.send(r);
+        let ucpf = await db.infoa_dtn_tb_cliente.findOne({ 
+                where: { ds_cpf : usuParam.cpf }  });    
+            
+            if (u != null)
+            return resp.send({  erro: 'E-mail já cadastrado' });
+
+            if (ucpf != null)
+            return resp.send({  erro: 'CPF já cadastrado' });
+
+            let r = await db.infoa_dtn_tb_cliente.create( {
+                ds_email: usuParam.email,
+                nm_cliente: usuParam.nome,
+                ds_senha: usuParam.senha,
+                ds_cpf: usuParam.cpf,
+                ds_telefone: usuParam.tel
+                
+
+            })
+            resp.send(r);
+
     } catch (e) {
-        resp.send(e);
-    }
-    if (email === '' ) {
-        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
+            resp.send({ erro: 'Ocorreu um erro'})
     }
 })
+
+{ /*PÁGINA DE REGISTRAR USUÁRIO, CONSULTAR OS USUARIOS JÁ CADASTRADOS */}
+app.get('/usuario', async (req, resp) => {
+    try {
+        let usuarios = await db.infoa_dtn_tb_cliente.findAll();
+        resp.send(usuarios);
+    }  catch (e) {
+        resp.send({ erro: 'Ocorreu um erro'})
+    }
+})
+
+{ /* DELETE PARA DELETAR UM USUARIO CADASTRADO NO SITE (PRECISA ALTERAR, NÃO FUNCIONA) 
+app.delete('/usuario/:id', async (req, resp) => {
+    try {
+        let {id} = req.params;
+
+        let r = await db.infoa_dtn_tb_cliente.destroy({
+            where: { id_cliente: id}
+
+        })
+        resp.sendStatus(200)
+    } catch (e) {
+        resp.send({erro: e.toString() } );
+    }
+
+})
+
+*/}
+
+
+
+
+
+
 
 app.listen(process.env.PORT, x => console.log(`subiu na porta ${process.env.PORT}`));

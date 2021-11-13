@@ -1,51 +1,32 @@
-import axios from "axios";
+
 import { Container } from "./styled";
-import Cookies from 'js-cookie';
+
 import { Button } from "../../../components/button/styled";
 import { Input } from "../../../components/input/styled";
-import { useState, useRef } from "react";
-import { useHistory } from 'react-router-dom';
+
 import { Link } from 'react-router-dom';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar';
-import Api from '../../../service/api'
 
-const api = new Api
+
+
 
 
 
 export default function Login() {
 
-    const [ email, setEmail] = useState('');
-    const [ senha, setSenha] = useState('');
+    
 
-    const loading = useRef(null); 
-    const navigation = useHistory(); 
-
-    async function logar() {
-        loading.current.continuousStart();
-        const r = await api.login(email, senha);
-        console.log(r)
-        const r2 = await api.getId(email);
-        if (r.status === 'ok') 
-        if (email != undefined)
-        {
-            Cookies.set('usuario-Logado', r2.id_cliente)
-            navigation.push('/')
-
-        } else {
-            toast.error(r);
-            loading.current.complete();
-        }
-    }
+        
+    
 
     return(
         <Container>
             
             <ToastContainer/>
-            <LoadingBar color="red" ref={loading} />
+            <LoadingBar color="red"/>
 
 
             
@@ -55,8 +36,7 @@ export default function Login() {
                     <div class="reg-campos">
                         <div class="reg-campotitulo">E-Mail:</div>
                         <div class="reg-campos-input">
-                            <Input value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            <Input 
                              />
                         </div>
                     </div>
@@ -64,8 +44,7 @@ export default function Login() {
                     <div class="reg-campos">
                         <div class="reg-campotitulo">Senha:</div>
                         <div class="reg-campos-input">
-                            <Input value={senha}
-                            onChange={e => setSenha(e.target.value)}
+                            <Input 
                              type="password"/>
                         <div class="reg-camposenha"> 
                             <Link to="/esqueciASenha">
@@ -76,9 +55,9 @@ export default function Login() {
                     </div>
 
                     <div class="reg-a">
-                        <Button onClick={logar}> Entrar
+                        <Button  Entrar />
 
-                        </Button>
+                        
                     </div>
 
                     <div class="reg-conta">

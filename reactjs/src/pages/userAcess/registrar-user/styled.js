@@ -80,8 +80,9 @@ const Container = styled.div`
     box-shadow: 0px 2px 3px 0px #888;
     height: 33em;
     width: 23em;
-    padding: 7em 9.2em;
-    margin-top: 130px;
+    padding: 1em 4.5em;
+    margin-top: 5em;
+    
   }
 
   .reg-titulo {

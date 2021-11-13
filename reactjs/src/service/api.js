@@ -36,12 +36,7 @@ export default class Api {
         return r.data;
     }
 
-    /*Busca o email e senha do usuário cadastrado no bando de dados e quando encontra as informações, permite o login do usuário no site*/
-    async login(email, senha) {
-        let r = await api.post('/login', {email, senha})
-        console.log(r);
-        return r.data;
-    }
+    
 
     /*Busca todos os produtos no banco de dados e os retorna filtrados pela categoria de time*/
     async listarTime(pagina, time){
@@ -67,4 +62,12 @@ export default class Api {
         let r = await api.delete(`/produto/${id}`);
         return r.data; 
     }
+
+    
+    async inserirUsuario(email, nome, cpf, senha, tel) {
+        let r = await api.post(`/usuario`, { email, nome, cpf, senha, tel })
+        return r.data;
+    } 
+
+
 }
