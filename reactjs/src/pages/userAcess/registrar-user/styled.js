@@ -9,39 +9,6 @@ const Container = styled.div`
     font: 400 0.8em "Oswald";
     outline: none;
   }
-
-  span {
-    position: relative;
-  }
-
-  input:focus {
-    border: solid 1px blue !important ;
-  }
-
-  input:invalid {
-    border-color: #ff4e66;
-  }
-
-  input:valid {
-    border-color: green;
-  }
-
-  input:invalid + span::before {
-    content: "✖";
-    color: red;
-  }
-
-  input:valid + span::before {
-    color: green;
-    content: "✓";
-  }
-
-  input + span::before {
-    position: absolute;
-    left: 23em;
-    top: -2em;
-  }
-
   .menu-botao button {
     color: #23272a;
     background-color: white;

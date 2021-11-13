@@ -21,7 +21,7 @@ export default function Esqueci() {
 
   async function recuperar() {
     loading.current.continuousStart();
-    const r = await axios.post(`https://destinyfrei.herokuapp.com/esqueciASenha` , { email : email});
+    const r = await axios.post(`http://localhost:3030/esqueciASenha` , { email : email});
     if (r.data.status === 'ok') {
         navigation.push('/reset', { email: email})
 

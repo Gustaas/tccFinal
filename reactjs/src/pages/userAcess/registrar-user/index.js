@@ -1,16 +1,16 @@
+
 import { Container } from "./styled";
 import { Button } from "../../../components/button/styled";
 import { Link } from 'react-router-dom';
-import axios from "axios";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar';
 
 import { useState } from "react";
-import { useHistory } from "react-router";
 
 import Api from "../../../service/api";
+
 const api = new Api();
 
 export default function RegistrarUser(){
@@ -21,25 +21,49 @@ export default function RegistrarUser(){
     const [ cpf, setCpf ] = useState('');
     const [ tel, setTel ] = useState('');
 
-    const navigation = useHistory();
+    const [nomeComparar, setNomeComparar] = useState("");
+    const [idAlterando, setIdAlterando] = useState(0);
 
-    const cadastar = async () => {
-        let r = await axios.post('http://localhost:3030/usuario' , 
-        {   email : email, 
-            senha: senha,
-            nome: nome,
-            cpf: cpf,
-            telefone : tel
+    
+
+
+    async function inserir() {
         
+        if (email === "" || email === nomeComparar) toast.dark("😪 Email inválidoo 😪");
+        if (nome === "")
+         toast.dark("😪 Nome Inválido");
+         
+        if (cpf === isNaN || cpf === "" || cpf < 0)
+          toast.dark("😪 Cpf inválido");
 
-        });
-        if (r.erro) {
-            alert(`${r.erro}`)
-        } else {
-            navigation.push('/login')
-            console.log(cadastar)
-        }
-    }
+        if (tel === "" || tel === isNaN || tel < 0)
+          toast.dark("😪 Telefone Inválido");
+        
+        setNomeComparar("");
+        if (idAlterando === 0) {
+            let r = await api.inserirU(
+              nome,
+              email,
+              senha,
+              cpf,
+              tel);
+
+            if (r.erro) toast.dark(r.erro);
+            else {
+              toast.dark("✍️Usuário registrado com sucesso, faça seu login agora mesmo !");
+              limparCampos();
+            }
+            function limparCampos() {
+                setNome("");
+                setEmail("");
+                setCpf("");
+                setSenha("");
+                setTel("");
+            
+                setIdAlterando(0);
+  }} 
+
+}
 
     
     
@@ -60,41 +84,41 @@ export default function RegistrarUser(){
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Nome Completo:</div>
                             <div class="reg-campos-input">
-                            <input value={nome}
+                            <input required value={nome}
                                    onChange={e => setNome(e.target.value)}  
                             
                              />
-                             <span></span>
+                             
                             </div>
                         </div>
                         <div class="reg-campos">
                             <div class="reg-campotitulo">E-mail:</div>
                             <div class="reg-campos-input">
-                            <input type="email" value={email}
+                            <input required type="email" value={email}
                                    onChange={e => setEmail(e.target.value)}  
                             
                              />
-                             <span></span>
+                             
                         </div>
                         </div>
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Escolha uma Senha:</div>
                             <div class="reg-campos-input"> <div/>
-                            <input type="password" value={senha}
+                            <input required type="password" value={senha}
                                    onChange={e => setSenha(e.target.value)}  
                             
                              />
-                             <span></span>
+                             
                             </div>
                         </div>
                         <div class="reg-campos">
                             <div class="reg-campotitulo">CPF:</div>
                             <div class="reg-campos-input">
-                            <input value={cpf}
+                            <input required value={cpf}
                                    onChange={e => setCpf(e.target.value)}  
                             
                              />
-                             <span></span>
+                             
                             </div>
                         </div>
 
@@ -103,25 +127,25 @@ export default function RegistrarUser(){
                         <div class="reg-campos">
                             <div class="reg-campotitulo">Telefone: </div>
                             <div class="reg-campos-input">
-                            <input value={tel}
+                            <input required value={tel}
                                    onChange={e => setTel(e.target.value)}  
                             
                              />
-                             <span></span>
+                             
                             </div>
                         </div>
 
                         
 
                         <div class="reg-a"> 
-                            <Button onClick={cadastar}>
+                            <Button onClick={inserir}>
                                 Criar conta
                             </Button>
                         </div>
 
                         <div class="reg-conta">
                             <div class="a"> 
-                                <Link to='/login'>Já possuo uma conta</Link>
+                                <Link to='/login'> Fazer Login</Link>
                             </div>
                         </div>
 

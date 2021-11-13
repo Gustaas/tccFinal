@@ -12,12 +12,39 @@ app.use(express.json());
 
 
 
+app.get('/login-id/:email', async (req, resp) => {
+    try {    
+    let email = req.params.email;
+
+    const r = await db.infoa_dtn_tb_cliente.findOne({ where: {ds_email: email}})
+    resp.send(r);
+    } catch (e) {
+        resp.send(e);
+    }
+})
+
+app.post('/login', async(req, resp) => {
+    const user = await db.infoa_dtn_tb_cliente.findOne({
+        where: {
+            ds_email: req.body.email,
+            ds_senha: req.body.senha
+        }
+    })
+    if (!user) {
+        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
+    } 
+    else 
+        resp.send({status: 'ok', nome: user.nm_cliente
+    });
+        
+})
 
 
 
 {/*a API busca o email do usuário no banco para redefinição da senha, caso encontre,
     é enviado um email de recuperação com um código de redefinição da senha.
     Se não, retorna um erro informando que o e-mail é inválido*/}
+
 app.post('/esqueciASenha', async(req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
@@ -45,6 +72,7 @@ app.post('/esqueciASenha', async(req, resp) => {
 
 
 {/*Gera um código de redefinação*/}
+
 function getRandomIntereger(min, max){
     return Math.floor(Math.random() * (max - min) + min );
 }
@@ -53,6 +81,7 @@ function getRandomIntereger(min, max){
 {/*O usuário insere o código recebido por email para alterar sua senha, caso o código seja diferente do recebido,
 é retornado uma mensagem dizendo que o código é inválido.
 Se as informações inseridas baterem com as enviadas pela API, é retornado que o código foi validado*/}
+
 app.post('/validarCodigo', async (req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
@@ -296,39 +325,28 @@ app.delete('/produto/:id', async (req, resp) => {
     }
 })
 
-{ /*PÁGINA DE REGISTRAR USUÁRIO */}
 
+{ /*PÁGINA DE REGISTRAR USUÁRIO */}
 app.post('/usuario', async (req, resp) => {
     try {
-        let usuParam = req.body;
+        let {nome, email, senha, cpf, telefone} = req.body;
+        let usuarioOK = await db.infoa_dtn_tb_cliente.findOne({ where: { ds_email: email}})
+        if(usuarioOK !== null)
+            return resp.send({ erro: ' EMAIL INVÁLIDO'})
+        let r = await db.infoa_dtn_tb_cliente.create({
+            nm_cliente: nome,
+            ds_email: email,
+            ds_senha: senha,
+            ds_cpf: cpf,
+            ds_telefone: telefone
+        })
+        resp.send(r);
 
-        let u = await db.infoa_dtn_tb_cliente.findOne({ 
-            where: { ds_email : usuParam.email }  });
-
-        let ucpf = await db.infoa_dtn_tb_cliente.findOne({ 
-                where: { ds_cpf : usuParam.cpf }  });    
-            
-            if (u != null)
-            return resp.send({  erro: 'E-mail já cadastrado' });
-
-            if (ucpf != null)
-            return resp.send({  erro: 'CPF já cadastrado' });
-
-            let r = await db.infoa_dtn_tb_cliente.create( {
-                ds_email: usuParam.email,
-                nm_cliente: usuParam.nome,
-                ds_senha: usuParam.senha,
-                ds_cpf: usuParam.cpf,
-                ds_telefone: usuParam.tel
-                
-
-            })
-            resp.send(r);
-
-    } catch (e) {
-            resp.send({ erro: 'Ocorreu um erro'})
+        } catch (e) {
+        resp.send({erro: e.toString()});
     }
 })
+
 
 { /*PÁGINA DE REGISTRAR USUÁRIO, CONSULTAR OS USUARIOS JÁ CADASTRADOS */}
 app.get('/usuario', async (req, resp) => {
@@ -367,7 +385,7 @@ app.post('/login', async (req, resp) => {
                    ds_senha: login.senha 
                 }
              })
-             if ( r == null )
+             if ( r == '' )
              return resp.send({erro : 'Credenciais Invalki9das '});
              resp.send(200)
 })

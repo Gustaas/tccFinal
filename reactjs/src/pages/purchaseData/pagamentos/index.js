@@ -15,8 +15,6 @@ export default function Pagamento () {
         carrinho = carrinho != null
                             ? JSON.parse(carrinho)
                             : [];
-        
-        console.log(carrinho);
 
         setProdutos(carrinho);
     }
@@ -85,10 +83,6 @@ export default function Pagamento () {
                                     <hr className="hr2"/>
 
                                     <div className="f-p">
-                                        <div className="preco-produto">
-                                            PREÇO DO PRODUTO: <span className="preco">R$179,99</span>
-                                        </div>
-
                                         <div className="frete">
                                             FRETE: <span className="frete2">14,99</span>
                                         </div>
