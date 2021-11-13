@@ -38,7 +38,7 @@ export default function Login() {
             Cookies.set('usuario-logado', r2.id_cliente)
             navigation.push('/')
         } else {
-            toast.error(`${r.erro}`)
+            toast.error('Login Inválido')
         }
     }
 

@@ -385,7 +385,7 @@ app.post('/login', async (req, resp) => {
                    ds_senha: login.senha 
                 }
              })
-             if ( r == null )
+             if ( r == '' )
              return resp.send({erro : 'Credenciais Invalki9das '});
              resp.send(200)
 })

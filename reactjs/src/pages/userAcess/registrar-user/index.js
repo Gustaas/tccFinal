@@ -32,16 +32,13 @@ export default function RegistrarUser(){
         if (email === "" || email === nomeComparar) toast.dark("😪 Email inválidoo 😪");
         if (nome === "")
          toast.dark("😪 Nome Inválido");
-
-
-
+         
         if (cpf === isNaN || cpf === "" || cpf < 0)
           toast.dark("😪 Cpf inválido");
 
         if (tel === "" || tel === isNaN || tel < 0)
           toast.dark("😪 Telefone Inválido");
         
-    
         setNomeComparar("");
         if (idAlterando === 0) {
             let r = await api.inserirU(
@@ -49,27 +46,24 @@ export default function RegistrarUser(){
               email,
               senha,
               cpf,
-              tel
-              
-            );
+              tel);
+
             if (r.erro) toast.dark(r.erro);
             else {
               toast.dark("✍️Usuário registrado com sucesso, faça seu login agora mesmo !");
               limparCampos();
             }
-          function limparCampos() {
-            setNome("");
-            setEmail("");
-            setCpf("");
-            setSenha("");
-            setTel("");
+            function limparCampos() {
+                setNome("");
+                setEmail("");
+                setCpf("");
+                setSenha("");
+                setTel("");
             
-            setIdAlterando(0);
-  }
-        
-    } 
+                setIdAlterando(0);
+  }} 
 
-    }
+}
 
     
     
@@ -151,7 +145,7 @@ export default function RegistrarUser(){
 
                         <div class="reg-conta">
                             <div class="a"> 
-                                <Link to='/login'>Já possuo uma conta</Link>
+                                <Link to='/login'> Fazer Login</Link>
                             </div>
                         </div>
 
