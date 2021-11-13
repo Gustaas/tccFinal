@@ -6,13 +6,14 @@ import { Input } from "../../../components/input/styled";
 
 import { Link } from 'react-router-dom';
 
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useHistory } from "react-router";
 
 import Api from "../../../service/api";
+import Cookies from "js-cookie";
 const api = new Api();
 
 
@@ -25,33 +26,27 @@ export default function Login() {
     const [ email, setEmail] = useState('');
     const [ senha, setSenha] = useState('');
 
+    const loading = useRef(null);
     const navigation = useHistory();
 
     const logar = async () => {
-        console.log(email)
-        console.log(senha)
-
-        let r = await api.login(email, senha);
+        const r = await api.login(email, senha);
         console.log(r)
-        if(r.erro) {
-            alert(`${r.erro}`)
-        } else {
+        const r2 = await api.getId(email)
+        console.log(r2)
+        if(r.status === 'ok') {
+            Cookies.set('usuario-logado', r2.id_cliente)
             navigation.push('/')
+        } else {
+            toast.error(`${r.erro}`)
         }
     }
-
-    
-
-        
-    
 
     return(
         <Container>
             
             <ToastContainer/>
             <LoadingBar color="red"/>
-
-
             
             <div class="conteudo-reg">
                 <div class="box-reg">

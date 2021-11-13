@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 
 export default function Cabecalho() {
 
-    let r = Cookies.get('usuario-Logado')
+    let r = Cookies.get('usuario-logado')
     console.log(r);
 
     function user(r) {
@@ -20,7 +20,6 @@ export default function Cabecalho() {
             )
         }
     }
-    
     return (
         <CabecalhoDiv>
           

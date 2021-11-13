@@ -12,12 +12,39 @@ app.use(express.json());
 
 
 
+app.get('/login-id/:email', async (req, resp) => {
+    try {    
+    let email = req.params.email;
+
+    const r = await db.infoa_dtn_tb_cliente.findOne({ where: {ds_email: email}})
+    resp.send(r);
+    } catch (e) {
+        resp.send(e);
+    }
+})
+
+app.post('/login', async(req, resp) => {
+    const user = await db.infoa_dtn_tb_cliente.findOne({
+        where: {
+            ds_email: req.body.email,
+            ds_senha: req.body.senha
+        }
+    })
+    if (!user) {
+        resp.send({status: 'erro', mensagem: 'Credenciais Inválidas'});
+    } 
+    else 
+        resp.send({status: 'ok', nome: user.nm_cliente
+    });
+        
+})
 
 
 
 {/*a API busca o email do usuário no banco para redefinição da senha, caso encontre,
     é enviado um email de recuperação com um código de redefinição da senha.
     Se não, retorna um erro informando que o e-mail é inválido*/}
+
 app.post('/esqueciASenha', async(req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {
@@ -45,6 +72,7 @@ app.post('/esqueciASenha', async(req, resp) => {
 
 
 {/*Gera um código de redefinação*/}
+
 function getRandomIntereger(min, max){
     return Math.floor(Math.random() * (max - min) + min );
 }
@@ -53,6 +81,7 @@ function getRandomIntereger(min, max){
 {/*O usuário insere o código recebido por email para alterar sua senha, caso o código seja diferente do recebido,
 é retornado uma mensagem dizendo que o código é inválido.
 Se as informações inseridas baterem com as enviadas pela API, é retornado que o código foi validado*/}
+
 app.post('/validarCodigo', async (req, resp) => {
     const user = await db.infoa_dtn_tb_cliente.findOne({
         where: {

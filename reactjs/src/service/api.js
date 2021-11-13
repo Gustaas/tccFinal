@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'http://localhost:3030'
+    baseURL: 'http://localhost:3030/'
 })
 
 export default class Api {
@@ -73,6 +73,4 @@ export default class Api {
         let r = await api.post('/login', {email, senha})
         return r.data;
     }
-
-
 }
