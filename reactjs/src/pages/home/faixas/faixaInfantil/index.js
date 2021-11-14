@@ -1,7 +1,7 @@
 import { Container } from "../../styled";
 import { Link } from "react-router-dom";
 
-export default function Faixa4 () {
+export default function FaixaInfantil () {
     return (
         <Container>
             <div class="faixa-infantil">

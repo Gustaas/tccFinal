@@ -7,6 +7,7 @@ import Faixa1 from './faixas/faixa1/faixa1.js';
 import Faixa2 from './faixas/faixa2/index.js';
 import Faixa3 from './faixas/faixa3/index.js';
 import Faixa4 from './faixas/faixaInfantil/index.js';
+import FaixaInfantil from './faixas/faixaInfantil/index.js';
 
 export default function Home () {
     return (
@@ -18,7 +19,7 @@ export default function Home () {
 
         <Faixa3/>
 
-        <Faixa4/>
+        <FaixaInfantil/>
 
         <div class="faixa-4">
             <div class="geral-fut">
