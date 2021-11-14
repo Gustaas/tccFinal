@@ -3,35 +3,16 @@ import { Link } from 'react-router-dom';
 import { Container } from './styled';
 import Rodapé from '../../components/footer/index';
 import Cookies from 'js-cookie';
+import Faixa1 from './faixas/faixa1/faixa1.js';
+import Faixa2 from './faixas/faixa2/index.js';
 
 export default function Home () {
     return (
     <Container>
         <Cabecalho/>
-        <div class="faixa-1">
-            <div class="info">
-                <div class="texto">O Melhor do Esporte você encontra aqui.</div>
-            </div>
-        </div>
+        <Faixa1/>
 
-        <div class="faixa-2">
-            <div class="geral-masculino">
-                <div class="masculino">Masculino</div>
-                <div class="img-masculino">
-                    <div class="img-fut">
-                        <Link to="/produtos/masculinos">
-                            <img src="./assets/images/nike-airmax.jfif" alt="" />
-                        </Link>
-                    </div>
-                </div>
-                <div class="desc-t">
-                    <div class="grandes-passos">
-                    DÊ GRANDES PASSOS PARA O QUE DER E VIER COM A
-                    </div>
-                <div class="fam">FAMÍLIA AIR MAX.</div>
-                </div>
-            </div>
-        </div>
+        <Faixa2/>
 
         <div class="faixa-3">
             <div class="geral-feminino">
