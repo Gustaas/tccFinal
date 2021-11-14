@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import Index from './routes'
+import Final from './routes'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Index/>
+    <Final/>
   </React.StrictMode>,
   document.getElementById('root')
   
