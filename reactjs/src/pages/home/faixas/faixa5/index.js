@@ -1,28 +1,10 @@
-import Cabecalho from '../../components/cabecalho/index.js';
-import { Link } from 'react-router-dom';
-import { Container } from './styled';
-import Rodapé from '../../components/footer/index';
-import Cookies from 'js-cookie';
-import Faixa1 from './faixas/faixa1/faixa1.js';
-import Faixa2 from './faixas/faixa2/index.js';
-import Faixa3 from './faixas/faixa3/index.js';
-import Faixa4 from './faixas/faixaInfantil/index.js';
-import FaixaInfantil from './faixas/faixaInfantil/index.js';
+import { Container } from "../../styled";
+import { Link } from "react-router-dom";
 
-export default function Home () {
+export default function Faixa4 () {
     return (
-    <Container>
-        <Cabecalho/>
-        <Faixa1/>
-
-        <Faixa2/>
-
-        <Faixa3/>
-
-        <FaixaInfantil/>
-
-        <Faixa4/>
-        <div class="faixa-5">
+        <Container>
+            <div class="faixa-5">
             <div class="categorias">Escolha seu time do coração.</div>
                 <div class="box-img">
                     <div class="img-categ">
@@ -58,8 +40,6 @@ export default function Home () {
             </div>
 
         </div>
-
-        <Rodapé/>
-    </Container>
+        </Container>
     )
 }
