@@ -87,23 +87,32 @@ export const Container = styled.div`
 
     align-items: center;
     justify-content: center;
+    align-content: center;
 
     height: 50vh;
     font: 1.2em "Bebas Neue";
   }
 
   .box-reg {
-    border: solid 1px black;
-    box-shadow: 0px 2px 3px 0px #888;
+    align-items: center;
+    align-content: center;
     height: 19.5em;
     width: 24em;
     padding: 2em 3.2em;
   }
 
+  .logosite{
+    margin: 2em;
+    padding: 2.5em;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+
   .cod-rec {
     text-align: center;
 
-    font-size: 1.4em;
+    font-size: 1.75em;
   }
 
   
@@ -134,6 +143,22 @@ export const Container = styled.div`
     padding: 1em;
   }
 
+  .reg-conta {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+
+    font: "Bebas Neue";
+    background-color: #5EC5FF;
+
+    border: none;
+    border-radius: 15px;
+
+    cursor: pointer;
+    transition-duration: 0.5s;
+  }
+
+
   .reg-conta a{
     text-decoration: none;
   }
@@ -142,5 +167,5 @@ export const Container = styled.div`
     cursor: pointer;
     text-decoration: underline;
   }
-}
+
 `

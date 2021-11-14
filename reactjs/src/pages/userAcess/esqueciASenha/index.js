@@ -38,6 +38,7 @@ export default function Esqueci() {
 
         
       <div class="conteudo-reg">
+                <div className="logo"> <img src="../../assets/images/logo.svg" alt=""/> </div>
             <div class="box-reg">
                 <div class="reg-titulo">Alterar senha</div>
                 <div class="reg-campos">

@@ -1,29 +1,36 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+
 .conteudo-reg {
     display: flex;
     flex-direction: column;
 
     align-items: center;
+    align-content: center;
     justify-content: center;
 
     height: 80vh;
     font: 1.2em "Bebas Neue";
   }
 
+  .conteudo-reg img {
+    padding: 1.5em;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+
   .box-reg {
-    border: solid 1px black;
-    box-shadow: 0px 2px 3px 0px #888;
     height: 19.5em;
     width: 24em;
-    padding: 2em 3.2em;
+    padding: 5em 3.2em;
   }
 
   .reg-titulo {
     text-align: center;
 
-    font-size: 1.4em;
+    font-size: 1.75em;
   }
 
   .reg-campos {
@@ -52,9 +59,32 @@ export const Container = styled.div`
     padding: 1em;
   }
 
-  .reg-conta button{
-      text-decoration: none;
+  button {
+    text-decoration: none;
   }
 
-}
+  .reg-conta button{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    align-items: center;
+
+    padding: .6em 5em;
+
+    font: 1.2em "Bebas Neue";
+    background-color: #5EC5FF;
+
+    border: none;
+    border-radius: 15px;
+
+    cursor: pointer;
+    transition-duration: 0.5s;
+
+    width: 100%;
+  }
+
+  .reg-campos-input input {
+    border-radius: 15px;
+  }
+
 `

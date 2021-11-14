@@ -50,20 +50,20 @@ export default function Reset(props) {
   
 
   return (
-    <Container>
+      <Container>
   
       
-
 
   <div class="conteudo-reg">
       <ToastContainer/> 
       <LoadingBar/>
             <div class="box-reg">
+        <div className="logosite"> <img src="../../assets/images/logo.svg" alt=""/> </div>
                 <div class="cod-rec"> Código de confirmação</div>
                 <div class="reg-campos">
                     <div class="reg-campotitulo">Digite o código de 4 digitos</div>
                     <div class="reg-campos-input">
-                    <Input value={codigo}
+                    <Input style={{borderRadius: '15px'}} value={codigo}
                             onChange={e => setCodigo(e.target.value)}
                              type="text"/>  
                     </div>
