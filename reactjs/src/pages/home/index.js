@@ -8,6 +8,7 @@ import Faixa2 from './faixas/faixa2/index.js';
 import Faixa3 from './faixas/faixa3/index.js';
 import Faixa4 from './faixas/faixaInfantil/index.js';
 import FaixaInfantil from './faixas/faixaInfantil/index.js';
+import Faixa5 from './faixas/faixa5/index.js';
 
 export default function Home () {
     return (
@@ -22,42 +23,8 @@ export default function Home () {
         <FaixaInfantil/>
 
         <Faixa4/>
-        <div class="faixa-5">
-            <div class="categorias">Escolha seu time do coração.</div>
-                <div class="box-img">
-                    <div class="img-categ">
-                        <Link to='/saopaulo'>
-                            <img src="./assets/images/sp.png" alt=""/>
-                        </Link>
 
-
-                    </div>
-                <div class="img-categ">
-                        <Link to='/palmeiras'>
-                            <img src="./assets/images/pal.png" alt="" />
-                        </Link>
-                </div>
-
-                <div class="img-categ">
-                        <Link to='/corinthians'>
-                            <img src="./assets/images/sccp.png" alt="" />
-                        </Link>
-                </div>
-
-                <div class="img-categ">
-                        <Link to='/santos'>
-                            <img src="./assets/images/sfc.png" alt="" />
-                        </Link>
-                </div>
-
-                <div class="img-categ">
-                        <Link to='/flamengo'>
-                            <img src="./assets/images/fla.png" alt="" />
-                        </Link>
-                </div>
-            </div>
-
-        </div>
+        <Faixa5/>
 
         <Rodapé/>
     </Container>
