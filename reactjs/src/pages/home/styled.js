@@ -88,14 +88,14 @@ const Container = styled.div `
     margin-top: 130px;
     }
 
-    .geral-feminino {
+    .geral-feminino, .geral-infantil{
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     }
 
-    .feminino{
+    .feminino, .infantil{
     margin-bottom: 1em;
     }
 
@@ -105,7 +105,7 @@ const Container = styled.div `
     text-align: center;
     }
 
-    .img-feminino img {
+    .img-feminino img, .img-infatil img{
     width: 90vw;
     height: 100%;
     }
@@ -120,7 +120,7 @@ const Container = styled.div `
     margin-top: 1em;  
     }
 
-    .faixa-4 {
+    .faixa-4, .faixa-infantil {
     font: 2em "Bebas Neue";
     margin-top: 130px;
     }

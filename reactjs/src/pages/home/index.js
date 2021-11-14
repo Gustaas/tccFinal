@@ -5,6 +5,8 @@ import Rodapé from '../../components/footer/index';
 import Cookies from 'js-cookie';
 import Faixa1 from './faixas/faixa1/faixa1.js';
 import Faixa2 from './faixas/faixa2/index.js';
+import Faixa3 from './faixas/faixa3/index.js';
+import Faixa4 from './faixas/faixaInfantil/index.js';
 
 export default function Home () {
     return (
@@ -14,22 +16,9 @@ export default function Home () {
 
         <Faixa2/>
 
-        <div class="faixa-3">
-            <div class="geral-feminino">
-                <div class="feminino">Feminino</div>
-                <div class="img-feminino">
-                    <div class="img-fut">
-                        <Link to='produtos/femininos'>
-                            <img src="./assets/images/woman.png" alt="" />
-                        </Link>
-                    </div>
-                </div>
-                <div class="desc-tf">
-                    <div class="preo">NÃO SE PREOCUPE COM O CANSAÇO, NÓS TE DAMOS</div>
-                    <div class="sup">O MÁXIMO APOIO COM ISSO.</div>
-                </div>
-            </div>
-        </div>
+        <Faixa3/>
+
+        <Faixa4/>
 
         <div class="faixa-4">
             <div class="geral-fut">
