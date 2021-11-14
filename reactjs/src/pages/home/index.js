@@ -1,7 +1,7 @@
 import Cabecalho from '../../components/cabecalho/index.js';
 import { Link } from 'react-router-dom';
 import { Container } from './styled';
-import Rodapé from './footer/';
+import Rodapé from '../../components/footer/index';
 import Cookies from 'js-cookie';
 
 export default function Home () {

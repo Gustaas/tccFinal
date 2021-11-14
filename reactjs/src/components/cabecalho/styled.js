@@ -65,6 +65,12 @@ const CabecalhoDiv = styled.div`
     color: #7289da;
     box-shadow: 0 8px 15px rgb(0 0 0 / 20%);
   }
+
+  @media (max-width: 768px) {
+    .menu {
+      display: none;
+    }
+  }
 `
 
 export { CabecalhoDiv };
