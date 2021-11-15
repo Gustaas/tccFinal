@@ -9,7 +9,7 @@ export default function FaixaInfantil () {
                 <div class="infantil">Infantil</div>
                 <div class="img-infantil">
                     <div class="img-fut">
-                        <Link to='produtos/infantil'>
+                        <Link to='produtos/infantis'>
                             <img src="./assets/images/Infantojuvenil.png" alt="" />
                         </Link>
                     </div>
