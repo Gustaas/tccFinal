@@ -29,7 +29,7 @@ export default function RegistrarUser(){
 
     async function inserir() {
         
-        if (email === "" || email === nomeComparar) toast.error(" Email não pode ser vazio 📧 ❌ ");
+        if (email === "" || email === nomeComparar) toast.error(" Email Inválido 📧 ❌ ");
         if (nome === "")
          toast.error(" Nome Inválido");
          

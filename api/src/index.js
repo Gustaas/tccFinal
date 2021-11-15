@@ -332,7 +332,7 @@ app.post('/usuario', async (req, resp) => {
         let {nome, email, senha, cpf, telefone} = req.body;
         let usuarioOK = await db.infoa_dtn_tb_cliente.findOne({ where: { ds_email: email}})
         if(usuarioOK !== null)
-            return resp.send({ erro: ' E-mail já cadastrado !'})
+            return resp.send({ erro: ' EMAIL INVÁLIDO'})
         let r = await db.infoa_dtn_tb_cliente.create({
             nm_cliente: nome,
             ds_email: email,
