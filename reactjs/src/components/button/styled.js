@@ -15,8 +15,6 @@ const Button = styled.button`
 
     cursor: pointer;
     transition-duration: 0.5s;
-
-    width: 100em;
     
 `
 

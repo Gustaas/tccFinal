@@ -71,6 +71,7 @@ height: 100vh;
 
 .resumo > div {
     padding: 1em;
+    margin-left: -3em;
 }
 
 .conteudo > div {

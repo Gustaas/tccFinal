@@ -52,9 +52,11 @@ app.post('/esqueciASenha', async(req, resp) => {
         }
     });
 
-    if(!user) {
-        return resp.send({ erro: 'E-mail Inválido'});
-    }
+   
+    let usuarioOK = await db.infoa_dtn_tb_cliente.findOne({ where: { ds_email: email}})
+        if(usuarioOK !== null) {
+            return resp.send({ erro: 'E-mail Inválido'});
+        }
     let code = getRandomIntereger(1000, 9999);
     await db.infoa_dtn_tb_cliente.update({
         ds_codigo_rec: code
