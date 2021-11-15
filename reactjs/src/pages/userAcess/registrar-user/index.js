@@ -29,15 +29,15 @@ export default function RegistrarUser(){
 
     async function inserir() {
         
-        if (email === "" || email === nomeComparar) toast.dark("😪 Email inválidoo 😪");
+        if (email === "" || email === nomeComparar) toast.error(" Email não pode ser vazio 📧 ❌ ");
         if (nome === "")
-         toast.dark("😪 Nome Inválido");
+         toast.error(" Nome Inválido");
          
         if (cpf === isNaN || cpf === "" || cpf < 0)
-          toast.dark("😪 Cpf inválido");
+          toast.error(" Cpf inválido");
 
         if (tel === "" || tel === isNaN || tel < 0)
-          toast.dark("😪 Telefone Inválido");
+          toast.error(" Telefone Inválido");
         
         setNomeComparar("");
         if (idAlterando === 0) {

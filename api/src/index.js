@@ -52,11 +52,9 @@ app.post('/esqueciASenha', async(req, resp) => {
         }
     });
 
-   
-    let usuarioOK = await db.infoa_dtn_tb_cliente.findOne({ where: { ds_email: email}})
-        if(usuarioOK !== null) {
-            return resp.send({ erro: 'E-mail Inválido'});
-        }
+    if(!user) {
+        return resp.send({ erro: 'E-mail Inválido'});
+    }
     let code = getRandomIntereger(1000, 9999);
     await db.infoa_dtn_tb_cliente.update({
         ds_codigo_rec: code
@@ -334,7 +332,7 @@ app.post('/usuario', async (req, resp) => {
         let {nome, email, senha, cpf, telefone} = req.body;
         let usuarioOK = await db.infoa_dtn_tb_cliente.findOne({ where: { ds_email: email}})
         if(usuarioOK !== null)
-            return resp.send({ erro: ' EMAIL INVÁLIDO'})
+            return resp.send({ erro: ' E-mail já cadastrado !'})
         let r = await db.infoa_dtn_tb_cliente.create({
             nm_cliente: nome,
             ds_email: email,
@@ -388,7 +386,7 @@ app.post('/login', async (req, resp) => {
                 }
              })
              if ( r == '' )
-             return resp.send({erro : 'Credenciais Invalki9das '});
+             return resp.send({erro : 'Credenciais Invalidas '});
              resp.send(200)
 })
 
