@@ -71,4 +71,21 @@ h1 {
     text-decoration: underline;
 }
 
+@media (max-width: 767px) {
+    .box-cartao > div {
+        align-items: center;
+        flex-direction: row;
+        width: 4em;
+    }
+
+    .box-cartao img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .container, .rodape {
+        flex-direction: column;
+    }
+}
+
 `
