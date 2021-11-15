@@ -107,5 +107,17 @@ const Container = styled.div`
 .reg-a button:hover{
   opacity: 50%;
 }
+
+@media (max-width: 767px) {
+
+  .box-reg {
+    width: 12em;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+  }
+}
 `
 export {Container}
