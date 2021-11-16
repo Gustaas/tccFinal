@@ -402,7 +402,7 @@ app.post('/login', async (req, resp) => {
              if ( r == '' )
              return resp.send({erro : 'Credenciais Invalidas '});
              resp.send(200)
-}) /* */
+}) /* a*/
 
 
 
