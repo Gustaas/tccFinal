@@ -87,4 +87,27 @@ export const Container = styled.div`
     border-radius: 15px;
   }
 
+@media (max-width: 767px) {
+  .conteudo-reg > div {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    width: 15em;
+    font: 1.2em "Bebas Neue";
+  }
+
+  .reg-conta {
+    text-align: center;
+    font: 200 1em "Bebas Neue";
+  }
+
+  .reg-conta button {
+    text-align: center;
+    font-size: 0.75em;
+  }
+}
 `
