@@ -49,7 +49,6 @@ const Container = styled.div`
     width: 23em;
     padding: 1em 4.5em;
     margin-top: 5em;
-    
   }
 
   .reg-titulo {
@@ -112,6 +111,28 @@ const Container = styled.div`
     text-decoration: underline;
   }
 
+  @media (max-width: 767px) {
+    .box-reg {
+    border: none;
+    box-shadow: none;
+    width: 13em;
+    margin-top: 5em;
+
+    align-items: center;
+  }
+
+  .box-reg > div {
+    align-items: center;
+    align-content: center;
+  }
+
+  .reg-a {
+    width: 15em;
+    height: 4em;
+    font-size: 0.75em;
+    text-align: center;
+  }
+  }
   
 `;
 export { Container };
