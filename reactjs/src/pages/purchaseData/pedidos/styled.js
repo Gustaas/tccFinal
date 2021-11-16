@@ -214,8 +214,11 @@ button {
 
 
 
-@media (max-width: 400px) {
+@media (max-width: 767px) {
 
+    * {
+        font-size: 1em;
+    }
 .box-container-pedio > div {
     flex-direction: column;
 }
@@ -227,8 +230,12 @@ button {
 .container-pedido, .s-p {
     flex-direction: column;
     align-items: center;
-    width: 5em;
-    height: 5em;
+    width: 12em;
+    height: 4em;
+}
+
+.preco {
+    display: none;
 }
 
 }
