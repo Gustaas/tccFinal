@@ -391,6 +391,20 @@ app.post('/login', async (req, resp) => {
 })
 
 
+/*app.post('/login-adm', async (req, resp) => {
+    let login = req.body;
+
+    let r = await db.infoa_dtn_tb_cliente.findOne( 
+        { where: { ds_email: login.email, 
+                   ds_senha: login.senha 
+                }
+             })
+             if ( r == '' )
+             return resp.send({erro : 'Credenciais Invalidas '});
+             resp.send(200)
+}) /* */
+
+
 
 
 app.listen(process.env.PORT, x => console.log(`subiu na porta ${process.env.PORT}`));
