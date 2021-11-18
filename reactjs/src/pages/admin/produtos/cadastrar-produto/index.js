@@ -26,13 +26,14 @@ export default function CadastrarProduto () {
     */
 
     async function inserir() {
-        if (nome !=='' && preco > 0 && categoria !=='' && genero !== '' && img !=='' && desc !=='' && time !='' )
+        if (nome !=='' && preco > 0 && categoria !=='' && genero !== '' && img !=='' && desc !=='' && time !=='' )
             {
                 let r = await api.inserir(nome, genero, desc, categoria, preco, img, time);
                 if (r.erro)
                     toast.dark('Erro')
                 else
                     toast.dark('Produto Inserido')
+                    limparCampos();
         } else {
             toast.dark('Campos Inválidos')
         }

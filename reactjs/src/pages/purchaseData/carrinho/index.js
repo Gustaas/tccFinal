@@ -8,17 +8,28 @@ import { Link } from "react-router-dom";
 
 export default function Carrinho () {
     const [produtos, setProdutos] = useState([]);
+    const [total, setTotal] = useState(0);
+
     useEffect(carregarCarrinho, []);
 
+    function atualizarTotal() {
+        let carrinho = Cookie.get('carrinho');
+        carrinho = carrinho != null
+                            ? JSON.parse(carrinho)
+                            : [];
+
+        let t = carrinho.reduce((prev,curr) => prev + curr.vl_preco * curr.qtd, 0);
+        t = Number(t.toFixed(2)); 
+        setTotal(t)
+    }
 
     function carregarCarrinho() {
         let carrinho = Cookie.get('carrinho');
         carrinho = carrinho != null
                             ? JSON.parse(carrinho)
                             : [];
-        
-        console.log(carrinho);
 
+        atualizarTotal();
         setProdutos(carrinho);
     }
 
@@ -26,6 +37,7 @@ export default function Carrinho () {
         let carrinho = produtos.filter(item => item.id_produto !== id);
 
         Cookie.set('carrinho', JSON.stringify(carrinho));
+        atualizarTotal();
 
         setProdutos([...carrinho])
     }
@@ -36,6 +48,7 @@ export default function Carrinho () {
         produtoAlterado.qtd = qtd;
 
         Cookie.set('carrinho', JSON.stringify(produtos));
+        atualizarTotal();
     }
 
     return (
@@ -63,7 +76,7 @@ export default function Carrinho () {
                             
                     <div className="total">
                         VALOR TOTAL
-                        <span>{}</span>
+                        <span>{total}</span>
                     </div>
                     
 
