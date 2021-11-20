@@ -209,6 +209,16 @@ button:hover {
 button:visited {
   text-decoration: none;
 }
+
+@media (max-width: 767px) {
+
+  * {
+    font-size: 1em;
+  }
+  .box-p-b, .box-container, .box-endereço, .endereço {
+    width: 13em;
+  }
+}
 `
 
 export {Container}
