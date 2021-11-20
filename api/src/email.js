@@ -3,12 +3,12 @@ import nodemailer from 'nodemailer';
 
 {/*Vincula o host ao gmail e conecta nosso usuário para o envio de recuperação de senha*/}
 const sender = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    host: "smtp.gmail.com",
+    port: 587,
     secure: false,
     auth: {
-        user: 'da88609faee084',
-        pass: '68707b0056e99d',
+        user: 'destiny.contato21@gmail.com',
+        pass: '#Destiny123',
     },
 
 });

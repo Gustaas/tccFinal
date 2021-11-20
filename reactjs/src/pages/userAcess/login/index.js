@@ -30,12 +30,14 @@ export default function Login() {
     const navigation = useHistory();
 
     const logar = async () => {
+        //loading.current.continuoustart();
         const r = await api.login(email, senha);
         console.log(r)
         const r2 = await api.getId(email)
         console.log(r2)
         if(r.status === 'ok') {
             Cookies.set('usuario-logado', r2.id_cliente)
+           // loading.current.complete();
             navigation.push('/')
         } else {
             toast.error('Login Inválido')

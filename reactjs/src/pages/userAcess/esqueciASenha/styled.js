@@ -53,14 +53,18 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     
     padding: 1em;
   }
 
   button {
     text-decoration: none;
+  }
+
+  .reg-conta:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
 
   .reg-conta button{
@@ -80,7 +84,8 @@ export const Container = styled.div`
     cursor: pointer;
     transition-duration: 0.5s;
 
-    width: 100%;
+    width: 90%;
+    margin-right: 14px;
   }
 
   .reg-campos-input input {

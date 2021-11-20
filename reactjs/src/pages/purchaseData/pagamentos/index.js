@@ -8,7 +8,47 @@ import PagamentoItem from './pagamento item';
 export default function Pagamento () {
     const [opcao, setOpcao] = useState('');
     const [produtos, setProdutos] = useState([])
+    const [total, setTotal] = useState(0);
+    
+    
     useEffect(carregarCarrinho, []);
+
+    function finalizarCompra() {
+        let carrinho = Cookie.get('carrinho');
+        carrinho = carrinho != null
+                            ? JSON.parse(carrinho)
+                            : [];
+
+        let usuarioId = Cookie.get('usuario-logado');
+        
+        if (usuarioId != null && usuarioId !== '0' && usuarioId !== '') {
+
+            let pedido = {
+                items: carrinho,
+                usuario: Number(usuarioId)
+            }
+
+            console.log(pedido);
+
+        } else {
+            alert('Usuário não logado');
+        }
+
+        
+    }
+
+
+    function atualizarTotal() {
+        let carrinho = Cookie.get('carrinho');
+        carrinho = carrinho != null
+                            ? JSON.parse(carrinho)
+                            : [];
+
+        let t = carrinho.reduce((prev,curr) => prev + curr.vl_preco * curr.qtd, 0);
+        t = Number(t.toFixed(2)); 
+        setTotal(t)
+    }
+
 
     function carregarCarrinho() {
         let carrinho = Cookie.get('carrinho');
@@ -17,6 +57,7 @@ export default function Pagamento () {
                             : [];
 
         setProdutos(carrinho);
+        atualizarTotal();
     }
 
     function getCartao(c) {
@@ -92,16 +133,16 @@ export default function Pagamento () {
                                 
 
                                 <div className="total">
-                                    VOCÊ PAGARÁ: <span className="total2">R$194,98</span>
+                                    VOCÊ PAGARÁ: <span className="total2">{total}</span>
                                 </div>
 
                             </div>
                             <div className="botao">
-                                <Button>ADICIONAR CUPOM</Button>
+                                <Button onClick={finalizarCompra}>ADICIONAR CUPOM</Button>
                             </div>
                         </div>
                     </div>
-                        </div>
+                    </div>
                 </div>
 
 
