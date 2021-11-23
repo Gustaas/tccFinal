@@ -25,7 +25,7 @@ export default function Contador(props){
 
   useEffect( ()=> {
     props.onChange(qtd);
-  }, [qtd])
+  }, [props, qtd])
   
   return (
         
