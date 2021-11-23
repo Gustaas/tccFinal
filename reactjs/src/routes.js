@@ -12,6 +12,7 @@ import Masculinos from './pages/productSections/produtos-masculinos';
 import ProdutosTodos from './pages/productSections/todos-produtos';
 import LoginAdmin from './pages/admin/login-adm/index';
 import Pedidos from './pages/purchaseData/pedidos';
+import ProdPronto from './pages/purchaseData/produto-pronto';
 import registrarUser from './pages/userAcess/registrar-user';
 import PedidosAdmin from './pages/admin/pedidos-adm';
 import CadastrarProduto from './pages/admin/produtos/cadastrar-produto';
@@ -56,6 +57,10 @@ export default function Final() {
             {/* O usuário insere o código que recebeu em seu emaii e assim, altera a sua senha,
             podendo voltar a fazer login no site */}
             <Route path='/reset' component={Reset}/>
+
+            {/* O usuário é informado que a compra foi concluida*/}
+
+            <Route path='/finalizado' component={ProdPronto}/>
             
             {/*Abre a tela de produtos da categoria infantil*/}
             <Route path='/produtos/infantis' component={Infantil}/>

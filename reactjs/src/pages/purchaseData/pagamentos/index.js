@@ -4,38 +4,16 @@ import Cabecalho from '../../../components/cabecalho/index';
 import { Button } from '../../../components/button/styled';
 import { useState, useEffect } from 'react';
 import PagamentoItem from './pagamento item';
+import Cookies from 'js-cookie';
+import { useHistory } from 'react-router-dom';
 
 export default function Pagamento () {
     const [opcao, setOpcao] = useState('');
     const [produtos, setProdutos] = useState([])
     const [total, setTotal] = useState(0);
-    
+    const Navigation = useHistory();
     
     useEffect(carregarCarrinho, []);
-
-    function finalizarCompra() {
-        let carrinho = Cookie.get('carrinho');
-        carrinho = carrinho != null
-                            ? JSON.parse(carrinho)
-                            : [];
-
-        let usuarioId = Cookie.get('usuario-logado');
-        
-        if (usuarioId != null && usuarioId !== '0' && usuarioId !== '') {
-
-            let pedido = {
-                items: carrinho,
-                usuario: Number(usuarioId)
-            }
-
-            console.log(pedido);
-
-        } else {
-            alert('Usuário não logado');
-        }
-
-        
-    }
 
 
     function atualizarTotal() {
@@ -58,6 +36,11 @@ export default function Pagamento () {
 
         setProdutos(carrinho);
         atualizarTotal();
+    }
+
+    function finalizarCompra() {
+        Cookies.remove('carrinho');
+        Navigation.push('/finalizado')
     }
 
     function getCartao(c) {
@@ -124,9 +107,7 @@ export default function Pagamento () {
                                     <hr className="hr2"/>
 
                                     <div className="f-p">
-                                        <div className="frete">
-                                            FRETE: <span className="frete2">14,99</span>
-                                        </div>
+                                        
                                     </div>
                                 
                                     <hr className="hr2"/>
@@ -138,7 +119,7 @@ export default function Pagamento () {
 
                             </div>
                             <div className="botao">
-                                <Button onClick={finalizarCompra}>ADICIONAR CUPOM</Button>
+                                <Button onClick={finalizarCompra}>Finalizar Compra</Button>
                             </div>
                         </div>
                     </div>

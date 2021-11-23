@@ -1,0 +1,22 @@
+function finalizarCompra() {
+        let carrinho = Cookie.get('carrinho');
+        carrinho = carrinho != null
+                            ? JSON.parse(carrinho)
+                            : [];
+
+        let usuarioId = Cookie.get('usuario-logado');
+        
+        if (usuarioId != null && usuarioId !== '0' && usuarioId !== '') {
+
+            let pedido = {
+                items: carrinho,
+                usuario: Number(usuarioId)
+            }
+
+            console.log(pedido);
+
+        } else {
+            alert('Usuário não logado');
+        }
+
+}

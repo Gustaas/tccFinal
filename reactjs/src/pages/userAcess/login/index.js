@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingBar from 'react-top-loading-bar';
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 
 import Api from "../../../service/api";
@@ -25,8 +25,6 @@ export default function Login() {
 
     const [ email, setEmail] = useState('');
     const [ senha, setSenha] = useState('');
-
-    const loading = useRef(null);
     const navigation = useHistory();
 
     const logar = async () => {
@@ -77,8 +75,6 @@ export default function Login() {
 
                     <div class="reg-a">
                         <Button  onClick={logar} > Entrar </Button> 
-
-                        
                     </div>
 
                     <div class="reg-conta">
